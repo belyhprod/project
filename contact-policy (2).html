@@ -686,13 +686,13 @@
 </tr>
 <tr>
 <td><strong>Push</strong></td>
-<td class="num">~140k</td>
+<td class="num">~145k</td>
 <td><span class="status-dot green"></span> Активно используется</td>
 <td>Единая база с&nbsp;In-app по&nbsp;идентификатору устройства.</td>
 </tr>
 <tr>
 <td><strong>In-app</strong></td>
-<td class="num">~140k</td>
+<td class="num">~145k</td>
 <td><span class="status-dot green"></span> Активно используется</td>
 <td>Доставляется внутри приложения; единая база с&nbsp;Push.</td>
 </tr>
@@ -1563,163 +1563,163 @@ UPD Person : notify_worker_offline
 </section>
 
       <section id="s17">
-        <div class="section-head"><span class="section-num">17</span><h2>Дефекты и контроль качества</h2></div>
-        <p>Любое нарушение правил политики считается дефектом. Дефекты подлежат логированию, остановке кампании и разбору в команде. Цель — разбор и корректировка процесса.</p>
-        <h4>Классификация дефектов</h4>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Уровень</th><th>Что попадает</th><th>Действие</th></tr></thead>
-            <tbody>
-              <tr><td><span class="pill" style="color:var(--red);border-color:var(--red)">Critical</span></td><td>Регуляторное нарушение, рассылка после отписки, утечка данных, систематический переспам (отправка одним и тем же контентом подряд несколько дней), отправка по hard-suppression</td><td>Немедленная остановка. Эскалация владельцу политики. Ретроспектива.</td></tr>
-              <tr><td><span class="pill" style="color:var(--orange);border-color:var(--orange)">Major</span></td><td>Превышение частотных лимитов кампанией, конфликт двух воронок на одном юзере, отсутствие GEO-сегментации, отправка без exclude-сегментов</td><td>Остановка кампании. Фикс перед следующим запуском.</td></tr>
-              <tr><td><span class="pill" style="color:var(--blue);border-color:var(--blue)">Minor</span></td><td>Отсутствие персонализации при наличии данных, неоптимальное время отправки, отсутствие A/B на крупной кампании</td><td>Бэклог. Фикс в течение спринта.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <h4>Чеклист перед запуском кампании</h4>
-        <ul>
-          <li>Сегмент определен, документирован, работает в customer.io.</li>
-          <li>Exclude-сегменты учтены.</li>
-          <li>GEO-фильтр применен.</li>
-          <li>Подписка / topic проверяются.</li>
-          <li>Лимиты сообщений не нарушаются.</li>
-          <li>Контент персонализирован, локализован.</li>
-          <li>Цель и метрики прописаны.</li>
-          <li>Holdout-группа настроена.</li>
-          <li>Кампания тегирована (продукт, тип, владелец).</li>
-        </ul>
-        <div class="callout warn">
-          <span class="callout-label">Регулярный аудит</span>
-          Раз в квартал — аудит активных кампаний на соответствие политике. Раз в полугодие — обзор частотных лимитов на предмет ужесточения / смягчения.
-        </div>
-      </section>
+<div class="section-head"><span class="section-num">17</span>&nbsp;<h2>Дефекты и&nbsp;контроль качества</h2></div>
+<p>Любое нарушение правил политики считается дефектом. Дефекты подлежат логированию, остановке кампании и&nbsp;разбору в&nbsp;команде. Цель&nbsp;&mdash; разбор и&nbsp;корректировка процесса.</p>
+<h4>Классификация дефектов</h4>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Уровень</th> <th>Что попадает</th> <th>Действие</th></tr></thead>
+<tbody>
+<tr><td><span class="pill" style="color:var(--red);border-color:var(--red)">Critical</span></td> <td>Регуляторное нарушение, рассылка после отписки, утечка данных, систематический переспам (отправка одним и&nbsp;тем&nbsp;же контентом подряд несколько дней), отправка по&nbsp;hard-suppression</td> <td>Немедленная остановка. Эскалация владельцу политики. Ретроспектива.</td></tr>
+<tr><td><span class="pill" style="color:var(--orange);border-color:var(--orange)">Major</span></td> <td>Превышение частотных лимитов кампанией, конфликт двух воронок на&nbsp;одном юзере, отсутствие GEO-сегментации, отправка без exclude-сегментов</td> <td>Остановка кампании. Фикс перед следующим запуском.</td></tr>
+<tr><td><span class="pill" style="color:var(--blue);border-color:var(--blue)">Minor</span></td> <td>Отсутствие персонализации при наличии данных, неоптимальное время отправки, отсутствие A/B на&nbsp;крупной кампании</td> <td>Бэклог. Фикс в&nbsp;течение спринта.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Чеклист перед запуском кампании</h4>
+<ul>
+<li>Сегмент определен, документирован, работает в&nbsp;customer.io.</li>
+<li>Exclude-сегменты учтены.</li>
+<li>GEO-фильтр применен.</li>
+<li>Подписка&nbsp;/ topic проверяются.</li>
+<li>Лимиты сообщений не&nbsp;нарушаются.</li>
+<li>Контент персонализирован, локализован.</li>
+<li>Цель и&nbsp;метрики прописаны.</li>
+<li>Holdout-группа настроена.</li>
+<li>Кампания тегирована (продукт, тип, владелец).</li>
+</ul>
+<div class="callout warn">
+<span class="callout-label">Регулярный аудит</span>
+Раз в&nbsp;квартал&nbsp;&mdash; аудит активных кампаний на&nbsp;соответствие политике. Раз в&nbsp;полугодие&nbsp;&mdash; обзор частотных лимитов на&nbsp;предмет ужесточения&nbsp;/ смягчения.
+</div>
+</section>
 
-      <section id="s18">
-        <div class="section-head"><span class="section-num">18</span><h2>Роли и governance</h2></div>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Роль</th><th>Ответственность</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Owner политики <span style="white-space: nowrap;">(CRM-команда)</span></strong></td><td>Поддержка, обновление, ревью политики. Эскалация critical-дефектов. Финальное решение по исключениям.</td></tr>
-              <tr><td><strong>Владелец кампании <span style="white-space: nowrap;">(CRM-команда)</span></strong></td><td>Соответствие кампании политике на этапе запуска. Метрики, holdout, документация.</td></tr>
-              <tr><td><strong>Продукт</strong></td><td>Транзакционные лимиты по своему продукту. Subscription Center в продукте. Передача актуальных событий и атрибутов в CDP.</td></tr>
-              <tr><td><strong>Аналитика</strong></td><td>CRM-дашборд, расчет холдаутов, метрики, мониторинг здоровья базы.</td></tr>
-              <tr><td><strong>Compliance / Legal</strong></td><td>Регуляторика по GEO, GDPR, MICA. Утверждение Subscription Center и regulatory notices.</td></tr>
-              <tr><td><strong>Customer Relations</strong></td><td>Работа с VIP и ключевыми лидами в HubSpot. Согласование массовых кампаний, включающих VIP.</td></tr>
-              <tr><td><strong>Разработка</strong></td><td>Реализация frequency cap в CDP, computed attributes, интеграции продуктов с customer.io, синхронизация с HubSpot.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <h4>Принципы governance</h4>
-        <ul>
-          <li>Решения по политике принимает CRM-команда; решения по конкретным кампаниям — их владельцы в рамках политики.</li>
-          <li>Изменения политики обсуждаются и утверждаются, фиксируются в changelog.</li>
-          <li>Спорные ситуации эскалируются к owner'у политики, не решаются ad-hoc.</li>
-        </ul>
-      </section>
+<section id="s18">
+<div class="section-head"><span class="section-num">18</span>&nbsp;<h2>Роли и&nbsp;governance</h2></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Роль</th> <th>Ответственность</th></tr></thead>
+<tbody>
+<tr><td><strong>Owner политики <span style="white-space: nowrap;">(CRM-команда)</span></strong></td> <td>Поддержка, обновление, ревью политики. Эскалация critical-дефектов. Финальное решение по&nbsp;исключениям.</td></tr>
+<tr><td><strong>Владелец кампании <span style="white-space: nowrap;">(CRM-команда)</span></strong></td> <td>Соответствие кампании политике на&nbsp;этапе запуска. Метрики, holdout, документация.</td></tr>
+<tr><td><strong>Продукт</strong></td> <td>Транзакционные лимиты по&nbsp;своему продукту. Subscription Center в&nbsp;продукте. Передача актуальных событий и&nbsp;атрибутов в&nbsp;CDP.</td></tr>
+<tr><td><strong>Аналитика</strong></td> <td>CRM-дашборд, расчет холдаутов, метрики, мониторинг здоровья базы.</td></tr>
+<tr><td><strong>Compliance&nbsp;/ Legal</strong></td> <td>Регуляторика по&nbsp;GEO, GDPR, MICA. Утверждение Subscription Center и&nbsp;regulatory notices.</td></tr>
+<tr><td><strong>Customer Relations</strong></td> <td>Работа с&nbsp;VIP и&nbsp;ключевыми лидами в&nbsp;HubSpot. Согласование массовых кампаний, включающих VIP.</td></tr>
+<tr><td><strong>Разработка</strong></td> <td>Реализация frequency cap в&nbsp;CDP, computed attributes, интеграции продуктов с&nbsp;customer.io, синхронизация с&nbsp;HubSpot.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Принципы governance</h4>
+<ul>
+<li>Решения по&nbsp;политике принимает CRM-команда; решения по&nbsp;конкретным кампаниям&nbsp;&mdash; их&nbsp;владельцы в&nbsp;рамках политики.</li>
+<li>Изменения политики обсуждаются и&nbsp;утверждаются, фиксируются в&nbsp;changelog.</li>
+<li>Спорные ситуации эскалируются к&nbsp;owner&rsquo;у политики, не&nbsp;решаются ad-hoc.</li>
+</ul>
+</section>
 
-      <section id="s19">
-        <div class="section-head"><span class="section-num">19</span><h2>Пересмотр политики и исключения</h2></div>
-        <h4>Регулярный пересмотр</h4>
-        <ul>
-          <li>Полный ревью политики — <strong>ежеквартально</strong>.</li>
-          <li>Ревью лимитов на основе данных — <strong>ежемесячно</strong> для&nbsp;метрик базы.</li>
-          <li>Внеочередной пересмотр — при изменении регуляторных требований, запуске нового продукта, или превышении KPI здоровья базы.</li>
-        </ul>
-        <h4>Запрос на исключение</h4>
-        <p>Исключение из правил политики возможно для&nbsp;конкретной кампании при условии:</p>
-        <ul>
-          <li>Письменное обоснование от владельца кампании.</li>
-          <li>Согласование с owner'ом политики.</li>
-          <li>Логирование исключения в реестре кампаний с причиной и сроком действия.</li>
-          <li>Пост-фактум разбор результатов в течение 14 дней после кампании.</li>
-        </ul>
-        <h4>Changelog политики</h4>
-        <p>Все изменения версии документа фиксируются с датой, автором, описанием и причиной. Версионирование semver-style: <code>major.minor</code>. Major — переработка структуры; minor — уточнения и новые разделы.</p>
-        <div class="callout">
-          <span class="callout-label">Текущая версия</span>
-          v1.2 · апрель 2026. Ревью — ежеквартально.
-        </div>
-      </section>
+<section id="s19">
+<div class="section-head"><span class="section-num">19</span>&nbsp;<h2>Пересмотр политики и&nbsp;исключения</h2></div>
+<h4>Регулярный пересмотр</h4>
+<ul>
+<li>Полный ревью политики&nbsp;&mdash; <strong>ежеквартально</strong>.</li>
+<li>Ревью лимитов на&nbsp;основе данных&nbsp;&mdash; <strong>ежемесячно</strong> для метрик базы.</li>
+<li>Внеочередной пересмотр&nbsp;&mdash; при изменении регуляторных требований, запуске нового продукта, или превышении KPI здоровья базы.</li>
+</ul>
+<h4>Запрос на&nbsp;исключение</h4>
+<p>Исключение из&nbsp;правил политики возможно для конкретной кампании при условии:</p>
+<ul>
+<li>Письменное обоснование от&nbsp;владельца кампании.</li>
+<li>Согласование с&nbsp;owner&rsquo;ом политики.</li>
+<li>Логирование исключения в&nbsp;реестре кампаний с&nbsp;причиной и&nbsp;сроком действия.</li>
+<li>Пост-фактум разбор результатов в&nbsp;течение 14&nbsp;дней после кампании.</li>
+</ul>
+<h4>Changelog политики</h4>
+<p>Все изменения версии документа фиксируются с&nbsp;датой, автором, описанием и&nbsp;причиной. Версионирование semver-style: <code>major.minor</code>. Major&nbsp;&mdash; переработка структуры; minor&nbsp;&mdash; уточнения и&nbsp;новые разделы.</p>
+<div class="callout">
+<span class="callout-label">Текущая версия</span>
+v1.2 &middot; апрель 2026. Ревью&nbsp;&mdash; ежеквартально.
+</div>
+</section>
 
-      <section id="s20">
-        <div class="section-head"><span class="section-num">20</span><h2>Бенчмарки и обоснование</h2></div>
-        <p>Лимиты «1/сутки — 2/неделю — 8/месяц» лежат в нижней половине безопасного диапазона по всем индустриальным бенчмаркам. Это сознательно консервативный выбор: толерантность к маркетингу в финтехе ниже, чем в e-commerce, а цена ошибки — потеря канала вообще.</p>
-        <h3>Email</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Источник</th><th>Что измеряли</th><th>Вывод</th></tr></thead>
-            <tbody>
-              <tr><td>MailerLite 2025</td><td>Медиана unsubscribe</td><td>Медиана 0,22%; здоровый коридор до 0,5%.</td></tr>
-              <tr><td>HubSpot / LINK Mobility</td><td>Бенчмарк отписок</td><td>Норма 0,1–0,5% за кампанию.</td></tr>
-              <tr><td>Amra &amp; Elma 2026</td><td>Влияние частоты</td><td>12+ промо/мес → отписки до 0,31% (+85% к норме).</td></tr>
-              <tr><td>GetResponse</td><td>Оптимум CTR</td><td>Лучшие CTR — 1–2 рассылки/нед.</td></tr>
-              <tr><td>OwlClaw 2025</td><td>Sweet spot</td><td>B2C: до 2/нед для&nbsp;активных, 2–4/мес для&nbsp;общей базы.</td></tr>
-              <tr><td>Mailreach 2026</td><td>Opt-in</td><td>Стандарт 4–8 писем/мес.</td></tr>
-              <tr><td>Act-On / Omnisend / Deployteq</td><td>Sunset / карантин</td><td>60–90 дней без открытий → re-engagement; 6–12 мес → hard-suppression.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <h3>Push</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Источник</th><th>Что измеряли</th><th>Вывод</th></tr></thead>
-            <tbody>
-              <tr><td>Localytics</td><td>Порог отключения</td><td>1/нед → 10% отключают. 2–5/нед → 37–46% отключают, 22% перестают пользоваться.</td></tr>
-              <tr><td>Helplama</td><td>Деинсталляция</td><td>1 push/нед → 10% отключают, 6% удаляют. 3–6 push → 40% отключают.</td></tr>
-              <tr><td>Mobiloud</td><td>Удаление приложений</td><td><strong>71% удалений</strong> — из-за избыточных уведомлений.</td></tr>
-              <tr><td>MetaCTO</td><td>Sweet spot</td><td>2–5 хорошо таргетированных push/нед. Weekly push → +440% retention.</td></tr>
-              <tr><td>Apptile (D2C)</td><td>D2C / e-commerce</td><td>Sweet spot 1–3 push/нед.</td></tr>
-              <tr><td>Batch 2025</td><td>Контекст vs масс</td><td>OR контекстных 14,4%, генерических 4,19%.</td></tr>
-              <tr><td>Wohllebe et al. 2021</td><td>Академическое</td><td>Частота неперсонализированных push → ↑удалений.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <h3>Соответствие политики данным</h3>
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Параметр</th><th>Политика</th><th>Что говорят данные</th></tr></thead>
-            <tbody>
-              <tr><td>Сутки</td><td><strong>≤ 1 маркет</strong></td><td>≥ 2 push в день → массовое отключение и удаление приложения.</td></tr>
-              <tr><td>Неделя</td><td><strong>≤ 2 маркет</strong></td><td>2–5/нед push → 37–46% отключений (Localytics). Email CTR оптимум 1–2/нед.</td></tr>
-              <tr><td>Месяц</td><td><strong>≤ 8 маркет</strong></td><td>Стандарт opt-in 4–8/мес (Mailreach). 12+/мес → +85% к норме отписок.</td></tr>
-              <tr><td>Перерыв</td><td><strong>2–3 дня</strong></td><td>Соответствует frequency capping в Braze, Microsoft Dynamics.</td></tr>
-              <tr><td>Subscription Center</td><td><strong>Обязателен</strong></td><td>Снижает churn, сегментация по предпочтениям → 2x открываемости.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="callout">
-          <span class="callout-label">Итог</span>
-          Перерыв 2–3 дня между маркетинговыми сообщениями нужен, чтобы юзер не воспринимал коммуникации как «поток» и не вырабатывал привычку игнорировать канал. Карантин обязателен потому, что игнорирование сигналов неактивности убивает sender reputation домена и retention приложения целиком — страдает не только маркетинг, но и доставляемость транзакционных и системных сообщений.
-        </div>
-      </section>
+<section id="s20">
+<div class="section-head"><span class="section-num">20</span>&nbsp;<h2>Бенчмарки и&nbsp;обоснование</h2></div>
+<p>Лимиты &laquo;1/сутки&nbsp;&mdash; 2/неделю&nbsp;&mdash; 8/месяц&raquo; лежат в&nbsp;нижней половине безопасного диапазона по&nbsp;всем индустриальным бенчмаркам. Это сознательно консервативный выбор: толерантность к&nbsp;маркетингу в&nbsp;финтехе ниже, чем в&nbsp;e-commerce, а&nbsp;цена ошибки&nbsp;&mdash; потеря канала вообще.</p>
+<h3>Email</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Источник</th> <th>Что измеряли</th> <th>Вывод</th></tr></thead>
+<tbody>
+<tr><td>MailerLite 2025</td> <td>Медиана unsubscribe</td> <td>Медиана&nbsp;0,22%; здоровый коридор до&nbsp;0,5%.</td></tr>
+<tr><td>HubSpot&nbsp;/ LINK Mobility</td> <td>Бенчмарк отписок</td> <td>Норма&nbsp;0,1&ndash;0,5% за&nbsp;кампанию.</td></tr>
+<tr><td>Amra &amp;&nbsp;Elma 2026</td> <td>Влияние частоты</td> <td>12+&nbsp;промо/мес &rarr; отписки до&nbsp;0,31% (+85% к&nbsp;норме).</td></tr>
+<tr><td>GetResponse</td> <td>Оптимум CTR</td> <td>Лучшие CTR&nbsp;&mdash; 1&ndash;2&nbsp;рассылки/нед.</td></tr>
+<tr><td>OwlClaw 2025</td> <td>Sweet spot</td> <td>B2C: до&nbsp;2/нед для активных, 2&mdash;4/мес для общей базы.</td></tr>
+<tr><td>Mailreach 2026</td> <td>Opt-in</td> <td>Стандарт 4&ndash;8&nbsp;писем/мес.</td></tr>
+<tr><td>Act-On&nbsp;/ Omnisend&nbsp;/ Deployteq</td> <td>Sunset&nbsp;/ карантин</td> <td>60&ndash;90 дней без открытий &rarr; re-engagement; 6&ndash;12 мес &rarr; hard-suppression.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Push</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Источник</th> <th>Что измеряли</th> <th>Вывод</th></tr></thead>
+<tbody>
+<tr><td>Localytics</td> <td>Порог отключения</td> <td>1/нед &rarr; 10% отключают. 2&mdash;5/нед &rarr; 37&ndash;46% отключают, 22% перестают пользоваться.</td></tr>
+<tr><td>Helplama</td> <td>Деинсталляция</td> <td>1&nbsp;push/нед &rarr; 10% отключают, 6%&nbsp;удаляют. 3&ndash;6 push &rarr; 40% отключают.</td></tr>
+<tr><td>Mobiloud</td> <td>Удаление приложений</td> <td><strong>71% удалений</strong>&nbsp;&mdash; из-за избыточных уведомлений.</td></tr>
+<tr><td>MetaCTO</td> <td>Sweet spot</td> <td>2&ndash;5 хорошо таргетированных push/нед. Weekly push &rarr; +440% retention.</td></tr>
+<tr><td>Apptile (D2C)</td> <td>D2C&nbsp;/ e-commerce</td> <td>Sweet spot 1&ndash;3&nbsp;push/нед.</td></tr>
+<tr><td>Batch 2025</td> <td>Контекст vs&nbsp;масс</td> <td>OR&nbsp;контекстных 14,4%, генерических 4,19%.</td></tr>
+<tr><td>Wohllebe et&nbsp;al.&nbsp;2021</td> <td>Академическое</td> <td>Частота неперсонализированных push &rarr; &uarr;удалений.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Соответствие политики данным</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Параметр</th> <th>Политика</th> <th>Что говорят данные</th></tr></thead>
+<tbody>
+<tr><td>Сутки</td> <td><strong>&le; 1&nbsp;маркет</strong></td> <td>&ge; 2&nbsp;push в&nbsp;день &rarr; массовое отключение и&nbsp;удаление приложения.</td></tr>
+<tr><td>Неделя</td> <td><strong>&le; 2&nbsp;маркет</strong></td> <td>2&mdash;5/нед push &rarr; 37&ndash;46% отключений (Localytics). Email CTR оптимум 1&mdash;2/нед.</td></tr>
+<tr><td>Месяц</td> <td><strong>&le; 8&nbsp;маркет</strong></td> <td>Стандарт opt-in 4&mdash;8/мес (Mailreach). 12+/мес &rarr; +85% к&nbsp;норме отписок.</td></tr>
+<tr><td>Перерыв</td> <td><strong>2&ndash;3 дня</strong></td> <td>Соответствует frequency capping в&nbsp;Braze, Microsoft Dynamics.</td></tr>
+<tr><td>Subscription Center</td> <td><strong>Обязателен</strong></td> <td>Снижает churn, сегментация по&nbsp;предпочтениям &rarr; 2x&nbsp;открываемости.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout">
+<span class="callout-label">Итог</span>
+Перерыв 2&ndash;3 дня между маркетинговыми сообщениями нужен, чтобы юзер не&nbsp;воспринимал коммуникации как &laquo;поток&raquo; и&nbsp;не&nbsp;вырабатывал привычку игнорировать канал. Карантин обязателен потому, что игнорирование сигналов неактивности убивает sender reputation домена и&nbsp;retention приложения целиком&nbsp;&mdash; страдает не&nbsp;только маркетинг, но&nbsp;и&nbsp;доставляемость транзакционных и&nbsp;системных сообщений.
+</div>
+</section>
 
-      <section id="s21">
-        <div class="section-head"><span class="section-num">21</span><h2>Источники</h2></div>
-        <div class="src-list">
-          <div class="src-item"><span class="src-num">01</span>MailerLite — Email Marketing Benchmarks 2025</div>
-          <div class="src-item"><span class="src-num">02</span>GetResponse — Email Marketing Benchmarks</div>
-          <div class="src-item"><span class="src-num">03</span>Amra &amp; Elma — Unsubscribe Rate Stats 2026</div>
-          <div class="src-item"><span class="src-num">04</span>OwlClaw — Email Benchmarks 2025</div>
-          <div class="src-item"><span class="src-num">05</span>HubSpot — Open Rate Benchmark</div>
-          <div class="src-item"><span class="src-num">06</span>LINK Mobility — Unsubscribe Rate</div>
-          <div class="src-item"><span class="src-num">07</span>Mailreach — Email Frequency 2026</div>
-          <div class="src-item"><span class="src-num">08</span>Localytics — Push Tolerance Study</div>
-          <div class="src-item"><span class="src-num">09</span>Airship — Push Benchmarks</div>
-          <div class="src-item"><span class="src-num">10</span>Mobiloud — Optimal Push Frequency</div>
-          <div class="src-item"><span class="src-num">11</span>Pushwoosh — Push Benchmarks 2025</div>
-          <div class="src-item"><span class="src-num">12</span>Batch — Push Benchmark 2025</div>
-          <div class="src-item"><span class="src-num">13</span>Wohllebe et al. (2021)</div>
-          <div class="src-item"><span class="src-num">14</span>Braze — Frequency Capping Guide</div>
-          <div class="src-item"><span class="src-num">15</span>Microsoft Dynamics — Frequency Cap</div>
-          <div class="src-item"><span class="src-num">16</span>Act-On — Hierarchy of Engagement</div>
-          <div class="src-item"><span class="src-num">17</span>Omnisend — Email Sunset Policy</div>
-          <div class="src-item"><span class="src-num">18</span>Deployteq — Sunset &amp; Deliverability</div>
-        </div>
-        <p style="margin-top: 24px; font-size: 12px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;">
-          Документ обновляется централизованно CRM-командой. Версия v1.2 · апрель 2026 · ревью ежеквартально или при изменении регуляторных требований.
-        </p>
-      </section>
+<section id="s21">
+<div class="section-head"><span class="section-num">21</span>&nbsp;<h2>Источники</h2></div>
+<div class="src-list">
+<div class="src-item"><span class="src-num">01</span>MailerLite&nbsp;&mdash; Email Marketing Benchmarks 2025</div>
+<div class="src-item"><span class="src-num">02</span>GetResponse&nbsp;&mdash; Email Marketing Benchmarks</div>
+<div class="src-item"><span class="src-num">03</span>Amra &amp;&nbsp;Elma&nbsp;&mdash; Unsubscribe Rate Stats 2026</div>
+<div class="src-item"><span class="src-num">04</span>OwlClaw&nbsp;&mdash; Email Benchmarks 2025</div>
+<div class="src-item"><span class="src-num">05</span>HubSpot&nbsp;&mdash; Open Rate Benchmark</div>
+<div class="src-item"><span class="src-num">06</span>LINK Mobility&nbsp;&mdash; Unsubscribe Rate</div>
+<div class="src-item"><span class="src-num">07</span>Mailreach&nbsp;&mdash; Email Frequency 2026</div>
+<div class="src-item"><span class="src-num">08</span>Localytics&nbsp;&mdash; Push Tolerance Study</div>
+<div class="src-item"><span class="src-num">09</span>Airship&nbsp;&mdash; Push Benchmarks</div>
+<div class="src-item"><span class="src-num">10</span>Mobiloud&nbsp;&mdash; Optimal Push Frequency</div>
+<div class="src-item"><span class="src-num">11</span>Pushwoosh&nbsp;&mdash; Push Benchmarks 2025</div>
+<div class="src-item"><span class="src-num">12</span>Batch&nbsp;&mdash; Push Benchmark 2025</div>
+<div class="src-item"><span class="src-num">13</span>Wohllebe et&nbsp;al. (2021)</div>
+<div class="src-item"><span class="src-num">14</span>Braze&nbsp;&mdash; Frequency Capping Guide</div>
+<div class="src-item"><span class="src-num">15</span>Microsoft Dynamics&nbsp;&mdash; Frequency Cap</div>
+<div class="src-item"><span class="src-num">16</span>Act-On&nbsp;&mdash; Hierarchy of&nbsp;Engagement</div>
+<div class="src-item"><span class="src-num">17</span>Omnisend&nbsp;&mdash; Email Sunset Policy</div>
+<div class="src-item"><span class="src-num">18</span>Deployteq&nbsp;&mdash; Sunset &amp;&nbsp;Deliverability</div>
+</div>
+<p style="margin-top: 24px; font-size: 12px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;">
+Документ обновляется централизованно CRM-командой. Версия v1.2 &middot; апрель 2026 &middot; ревью ежеквартально или при изменении регуляторных требований.
+</p>
+</section>
 
   </main>
 </div>
