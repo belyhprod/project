@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Контактная политика EMCD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0E0F;
+    --bg-elev: #161618;
+    --bg-card: #1B1B1E;
+    --bg-input: #232326;
+    --border: #2A2A2E;
+    --border-strong: #3A3A40;
+    --text: #ECECEE;
+    --text-dim: #A4A4AC;
+    --text-muted: #6F6F76;
+    --accent: #FF5C28;
+    --accent-soft: #FF7A4C;
+    --green: #5BD18B;
+    --orange: #F0A958;
+    --red: #E66363;
+    --blue: #6BA8FF;
+    --p0: #E66363;
+    --p1: #F0A958;
+    --p2: #6BA8FF;
+    --p3: #5BD18B;
+    --p4: #A4A4AC;
+    --radius: 4px;
+  }
+  [data-theme="light"] {
+    --bg: #F4F2EE;
+    --bg-elev: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-input: #F0EEEA;
+    --border: #E2DED7;
+    --border-strong: #C9C4BB;
+    --text: #15151A;
+    --text-dim: #5A5A62;
+    --text-muted: #8A8A92;
+    --accent: #D94A1A;
+    --accent-soft: #E0673E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent); color: white; }
+
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--bg-elev);
+    border-right: 1px solid var(--border);
+    padding: 28px 24px;
+    position: sticky; top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    transition: opacity 0.15s;
+  }
+  .brand-logo:hover { opacity: 0.75; }
+  .brand-logo svg {
+    width: 65px; height: 18px;
+    display: block;
+    fill: currentColor;
+  }
+  .brand-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-dim);
+    padding-left: 12px;
+    border-left: 1px solid var(--border);
+  }
+  .brand-name strong { color: var(--text); font-weight: 600; }
+
+  .search { position: relative; }
+  .search input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 12px 9px 32px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    border-radius: var(--radius);
+  }
+  .search input:focus { outline: none; border-color: var(--accent); }
+  .search::before {
+    content: "⌕";
+    position: absolute; left: 11px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted); font-size: 14px;
+  }
+
+  .nav-group { display: flex; flex-direction: column; gap: 2px; }
+  .nav-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding: 6px 8px;
+    margin-top: 4px;
+  }
+  .nav-item {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 6px 8px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 13.5px;
+    border-left: 2px solid transparent;
+    transition: all 0.12s;
+  }
+  .nav-item:hover { color: var(--text); background: var(--bg-card); }
+  .nav-item.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+    background: var(--bg-card);
+  }
+  .nav-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    min-width: 22px;
+  }
+  .nav-item.active .nav-num { color: var(--accent); }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .theme-toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 8px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  .theme-toggle:hover { color: var(--text); border-color: var(--border-strong); }
+  .meta-info {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+  }
+
+  /* MAIN */
+  .main {
+    padding: 56px 64px 120px;
+    max-width: 1080px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .doc-header {
+    margin-bottom: 64px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .doc-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .doc-tag::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+  h1 {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .doc-lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-dim);
+    max-width: 680px;
+    margin-bottom: 24px;
+  }
+  .doc-meta-bar {
+    display: flex; gap: 32px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .doc-meta-bar span strong { color: var(--text-dim); font-weight: 500; }
+
+  section { margin-bottom: 80px; scroll-margin-top: 24px; }
+  .section-head {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .anchor-link {
+    margin-left: auto;
+    align-self: center;
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+  .anchor-link:hover {
+    color: var(--accent);
+    border-color: var(--border);
+    background: var(--bg-card);
+  }
+  .anchor-link.copied {
+    color: var(--green);
+    border-color: var(--green);
+    background: var(--bg-card);
+  }
+  .anchor-link svg {
+    width: 16px; height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+  }
+  .anchor-link .anchor-text { display: none; }
+  .anchor-link.copied .anchor-text { display: inline; }
+  h2 {
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 500;
+    font-size: 30px;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    letter-spacing: -0.005em;
+  }
+  h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin: 20px 0 10px;
+  }
+  p { margin-bottom: 14px; color: var(--text-dim); }
+  p strong { color: var(--text); font-weight: 600; }
+  ul, ol { margin: 12px 0 16px 0; padding-left: 22px; color: var(--text-dim); }
+  li { margin-bottom: 6px; }
+  li strong { color: var(--text); font-weight: 600; }
+
+  /* DEFS */
+  .defs {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 16px 0;
+  }
+  .defs > div {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .defs > div:nth-last-child(-n+2) { border-bottom: none; }
+  .defs dt {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .defs > div:nth-child(odd) {
+    background: var(--bg-elev);
+    border-right: 1px solid var(--border);
+  }
+  .defs dd { color: var(--text); font-size: 14px; }
+
+  /* TABLES */
+  .tbl-wrap { margin: 18px 0; border: 1px solid var(--border); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead tr { background: var(--bg-elev); }
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-dim);
+  }
+  td strong { color: var(--text); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: var(--text); }
+  td.num.warn { color: var(--orange); }
+  td.num.bad { color: var(--red); }
+  td.num.good { color: var(--green); }
+
+  /* PILLS */
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 2px 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .pill-p0 { color: var(--p0); border-color: var(--p0); }
+  .pill-p1 { color: var(--p1); border-color: var(--p1); }
+  .pill-p2 { color: var(--p2); border-color: var(--p2); }
+  .pill-p3 { color: var(--p3); border-color: var(--p3); }
+  .pill-p4 { color: var(--p4); }
+
+  /* CALLOUTS */
+  .callout {
+    padding: 16px 20px;
+    border-left: 2px solid var(--accent);
+    background: var(--bg-card);
+    margin: 18px 0;
+    font-size: 14px;
+  }
+  .callout-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .callout.warn { border-color: var(--orange); }
+  .callout.warn .callout-label { color: var(--orange); }
+  .callout.bad { border-color: var(--red); }
+  .callout.bad .callout-label { color: var(--red); }
+
+  /* METRICS */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 18px 0;
+  }
+  .metric { background: var(--bg); padding: 18px 20px; }
+  .metric-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .metric-value {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-value .unit {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+  }
+  .metric-note { font-size: 12px; color: var(--text-dim); line-height: 1.45; }
+
+  /* CODE */
+  pre, code { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; }
+  pre {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 14px 0;
+    line-height: 1.55;
+    position: relative;
+  }
+  code {
+    background: var(--bg-elev);
+    padding: 1px 6px;
+    color: var(--accent-soft);
+    border: 1px solid var(--border);
+  }
+  pre code { background: none; border: none; padding: 0; color: var(--text); }
+  .copy-btn {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 4px 9px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+  }
+  .copy-btn:hover { color: var(--text); border-color: var(--border-strong); }
+  .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+  /* DETAILS */
+  details { border: 1px solid var(--border); margin: 8px 0; background: var(--bg-card); }
+  details summary {
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text);
+    list-style: none;
+    display: flex; align-items: center; gap: 12px;
+    user-select: none;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before {
+    content: "+";
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 16px;
+  }
+  details[open] summary::before { content: "−"; }
+  details > div {
+    padding: 16px 18px 18px 18px;
+    color: var(--text-dim);
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .status-dot.green { background: var(--green); }
+  .status-dot.orange { background: var(--orange); }
+  .status-dot.red { background: var(--red); }
+  .status-dot.blue { background: var(--blue); }
+
+  .check, .x { font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+  .check { color: var(--green); }
+  .x { color: var(--red); }
+
+  /* SOURCES */
+  .src-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin: 18px 0;
+  }
+  .src-item {
+    padding: 10px 16px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .src-item:nth-child(2n) { border-right: none; }
+  .src-item:nth-last-child(-n+2) { border-bottom: none; }
+  .src-item .src-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-right: 8px;
+  }
+
+  /* TRACK MODE: hide opposite tracks */
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .main { padding: 32px 24px 80px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 24px; }
+    .defs { grid-template-columns: 1fr; }
+    .defs > div:nth-child(odd) { border-right: none; }
+    .src-list { grid-template-columns: 1fr; }
+    .src-item { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <a href="#" class="brand-logo" aria-label="EMCD">
+        <svg viewBox="0 0 65 18" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21.2362 0.181627C21.2713 0.0733276 21.3723 0 21.4861 0H25.2181C25.3963 0 25.5229 0.173637 25.4683 0.343307L19.8479 17.8168C19.8129 17.9255 19.7118 17.9991 19.5977 17.9991L15.81 17.9991C15.6314 17.9991 15.5048 17.8249 15.56 17.6551L21.2362 0.181627Z"/>
+          <path d="M21.2949 0.262692C21.295 0.117589 21.4126 0 21.5577 0H25.4073C25.5519 0 25.6693 0.116789 25.6701 0.261376L25.7666 17.7349C25.7674 17.8806 25.6495 17.9991 25.5038 17.9991H21.5486C21.4034 17.9991 21.2857 17.8814 21.2858 17.7362L21.2949 0.262692Z"/>
+          <path d="M37.7559 0.410845C37.8748 0.236373 37.7498 0 37.5387 0H33.7062C33.6193 0 33.538 0.0429287 33.4891 0.114689L21.5661 17.5882C21.4471 17.7626 21.572 17.9991 21.7832 17.9991H25.6301C25.717 17.9991 25.7983 17.9562 25.8472 17.8843L37.7559 0.410845Z"/>
+          <path d="M33.5083 0.181931C33.5434 0.0734766 33.6444 0 33.7583 0H37.6764C37.8549 0 37.9815 0.174235 37.9263 0.344054L32.2482 17.8175C32.2131 17.9258 32.1121 17.9991 31.9983 17.9991H28.1056C27.9272 17.9991 27.8007 17.8252 27.8556 17.6554L33.5083 0.181931Z"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M39.4201 0.181509C39.4553 0.0732691 39.5562 0 39.67 0H39.9098H43.9754H49.6983C49.8772 0 50.0038 0.174831 49.948 0.344797L48.9271 3.45505C48.8917 3.56296 48.791 3.63591 48.6774 3.63591H42.9715C42.858 3.63591 42.7573 3.70884 42.7218 3.81672L39.3666 14.0321C39.3108 14.202 39.4374 14.3769 39.6163 14.3769H45.0285C45.2074 14.3769 45.334 14.5516 45.2783 14.7216L44.264 17.8179C44.2286 17.9259 44.1278 17.9989 44.0142 17.9989H38.0638C38.0637 17.9989 38.0637 17.999 38.0636 17.999C38.0636 17.9991 38.0636 17.9991 38.0635 17.9991H33.9847C33.8061 17.9991 33.6795 17.8248 33.7348 17.655L39.4201 0.181509Z"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M52.2875 0H51.6836C51.5697 0 51.4687 0.0733451 51.4336 0.181664L47.7137 11.6389C47.6585 11.8087 47.7851 11.9829 47.9636 11.9829H51.8177C51.9313 11.9829 52.0326 11.9083 52.068 11.8003C53.1753 8.42495 53.5841 7.20819 53.9929 5.99144L53.993 5.99133L53.9932 5.99055C54.2037 5.36407 54.4142 4.73745 54.7201 3.81606C54.7558 3.70856 54.8564 3.63591 54.9697 3.63591H59.7788C59.9577 3.63591 60.0844 3.81078 60.0285 3.98075L56.6733 14.1961C56.6379 14.304 56.5372 14.3769 56.4236 14.3769H47.0299C46.9153 14.3769 46.8138 14.4513 46.7793 14.5606L45.8017 17.657C45.7482 17.8264 45.8747 17.9989 46.0523 17.9989H55.4241C55.4242 17.9989 55.4242 17.999 55.4242 17.999C55.4242 17.9991 55.4242 17.9991 55.4243 17.9991H59.924C60.0378 17.9991 60.1387 17.926 60.1739 17.8178L64.9871 3.05795C65.0043 3.00516 65.0043 2.94828 64.9872 2.89546L64.108 0.181816C64.0729 0.0734196 63.9719 0 63.8579 0H62.425H61.336H55.9778H52.2875Z"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.7894 0.181607C5.82458 0.0733173 5.9255 0 6.03936 0H6.29746H10.4263H19.4897C19.6682 0 19.7948 0.17414 19.7397 0.343935L18.7307 3.45419C18.6955 3.56254 18.5946 3.63591 18.4807 3.63591H9.37282C9.26039 3.63591 9.16042 3.70742 9.12409 3.81381L8.09059 6.8407C8.03236 7.01124 8.15912 7.18846 8.33932 7.18846H13.7064C13.8858 7.18846 14.0125 7.36417 13.9558 7.53435L12.9197 10.6446C12.884 10.752 12.7835 10.8244 12.6704 10.8244H6.73046C6.73043 10.8244 6.7304 10.8244 6.73039 10.8244C6.73038 10.8244 6.73035 10.8245 6.73032 10.8245H2.69295C2.5144 10.8245 2.38781 10.6502 2.44299 10.4804L5.7894 0.181607Z"/>
+          <path d="M1.12293 14.5449C1.15812 14.4366 1.25903 14.3633 1.37288 14.3633H14.8267C15.0054 14.3633 15.132 14.5378 15.0766 14.7076L14.0616 17.8179C14.0263 17.926 13.9255 17.9992 13.8117 17.9992H0.361807C0.183234 17.9992 0.0566471 17.8249 0.111853 17.6551L1.12293 14.5449Z"/>
+        </svg>
+      </a>
+      <div class="brand-name"><strong>Contact Policy</strong></div>
+    </div>
+
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="Поиск по разделам..." />
+    </div>
+
+    <!-- POLICY NAV -->
+    <nav class="nav-group">
+      <div class="nav-label">Документ</div>
+      <a class="nav-item" href="#s1"><span class="nav-num">01</span><span>Цели и принципы</span></a>
+      <a class="nav-item" href="#s2"><span class="nav-num">02</span><span>Область применения</span></a>
+      <a class="nav-item" href="#s3"><span class="nav-num">03</span><span>Сегментация</span></a>
+      <a class="nav-item" href="#s4"><span class="nav-num">04</span><span>Приоритеты</span></a>
+
+      <div class="nav-label">Лимиты и нагрузка</div>
+      <a class="nav-item" href="#s5"><span class="nav-num">05</span><span>Сводные лимиты</span></a>
+      <a class="nav-item" href="#s6"><span class="nav-num">06</span><span>Лимиты по каналам</span></a>
+      <a class="nav-item" href="#s7"><span class="nav-num">07</span><span>Дневной бюджет</span></a>
+      <a class="nav-item" href="#s8"><span class="nav-num">08</span><span>Карантин</span></a>
+      <a class="nav-item" href="#s9"><span class="nav-num">09</span><span>Время отправки</span></a>
+
+      <div class="nav-label">Координация</div>
+      <a class="nav-item" href="#s10"><span class="nav-num">10</span><span>Конфликты воронок</span></a>
+      <a class="nav-item" href="#s11"><span class="nav-num">11</span><span>Подписки</span></a>
+      <a class="nav-item" href="#s12"><span class="nav-num">12</span><span>Гео и регуляторика</span></a>
+      <a class="nav-item" href="#s13"><span class="nav-num">13</span><span>Ключевые сегменты</span></a>
+
+      <div class="nav-label">Контент и операции</div>
+      <a class="nav-item" href="#s14"><span class="nav-num">14</span><span>Контент и персонализация</span></a>
+      <a class="nav-item" href="#s15"><span class="nav-num">15</span><span>Управление кампаниями</span></a>
+      <a class="nav-item" href="#s16"><span class="nav-num">16</span><span>Метрики</span></a>
+      <a class="nav-item" href="#s17"><span class="nav-num">17</span><span>Дефекты и QA</span></a>
+      <a class="nav-item" href="#s18"><span class="nav-num">18</span><span>Роли и governance</span></a>
+      <a class="nav-item" href="#s19"><span class="nav-num">19</span><span>Пересмотр политики</span></a>
+
+      <div class="nav-label">Обоснование</div>
+      <a class="nav-item" href="#s20"><span class="nav-num">20</span><span>Бенчмарки</span></a>
+      <a class="nav-item" href="#s21"><span class="nav-num">21</span><span>Источники</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="theme-toggle" id="themeToggle">
+        <span>Тема</span><span id="themeLabel">Темная</span>
+      </button>
+      <div class="meta-info">
+        Версия <strong style="color:var(--text-dim)">v1.2</strong><br />
+        Обновлено <strong style="color:var(--text-dim)">апр. 2026</strong><br />
+        Ревью <strong style="color:var(--text-dim)">квартально</strong>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <!-- =================== POLICY TRACK =================== -->
+      <header class="doc-header">
+      <div class="doc-tag">CRM &middot; Policy &middot; v1.2</div>
+      <h1>Контактная политика EMCD</h1>
+      <p class="doc-lede">Правила взаимодействия с&nbsp;пользователем во&nbsp;всех каналах коммуникации экосистемы. Покрывает типы сообщений, частотные лимиты, карантин неактивных, разрешение конфликтов между маркетинговыми воронками, подписки, регуляторику и&nbsp;governance. Лимиты обоснованы исследованиями индустрии по&nbsp;email и&nbsp;push.</p>
+      <div class="doc-meta-bar">
+      <span><strong>Канал внедрения</strong> Customer.io</span>
+      <span><strong>Применима</strong> Все CRM-команды</span>
+      <span><strong>Owner</strong> CRM-команда</span>
+      </div>
+      </header>
+
+      <section id="s1">
+      <div class="section-head"><span class="section-num">01</span>&nbsp;<h2>Цели и&nbsp;принципы</h2></div>
+      <h4>Цель политики</h4>
+      <p>Контактная политика EMCD определяет правила взаимодействия с&nbsp;пользователями во&nbsp;всех CRM-каналах коммуникации (список доступен в&nbsp;этом документе) для&nbsp;роста активации и&nbsp;вовлечения, увеличения использования продуктов экосистемы, максимизации LTV, снижения оттока и&nbsp;обеспечения консистентного опыта при соблюдении регуляторных требований. Политика обязательна для&nbsp;всех CRM-коммуникаций.</p>
+      <h4>Роль CRM</h4>
+      <p>CRM&nbsp;&mdash; часть продуктового опыта и&nbsp;инструмент управления поведением пользователя. Коммуникации рассматриваются как продуктовые действия, влияющие на&nbsp;активацию, удержание и&nbsp;выручку.</p>
+      <h4>Принципы коммуникации</h4>
+      <div class="defs">
+      <div><dt>Релевантность</dt></div> <div><dd>Сообщение отправляется только при наличии триггера и&nbsp;ценности.</dd></div>
+      <div><dt>Value &gt; Pressure</dt></div> <div><dd>Коммуникация приносит пользу или выгоду, не&nbsp;давление.</dd></div>
+      <div><dt>Контроль нагрузки</dt></div> <div><dd>Частота сообщений ограничивается, перегруз&nbsp;&mdash; дефект, контролируем и&nbsp;избегаем.</dd></div>
+      <div><dt>Своевременность</dt></div> <div><dd>Коммуникации привязаны к&nbsp;состоянию и&nbsp;действиям пользователя.</dd></div>
+      <div><dt>Персонализация</dt></div> <div><dd>Минимум&nbsp;&mdash; сегментная, приоритет&nbsp;&mdash; поведенческая.</dd></div>
+      <div><dt>Консистентность</dt></div> <div><dd>Конфликтующие и&nbsp;дублирующие сообщения исключены.</dd></div>
+      <div><dt>Data-driven</dt></div> <div><dd>Каждая коммуникация имеет цель и&nbsp;измеряется.</dd></div>
+      <div><dt>Compliance</dt></div> <div><dd>Отписки и&nbsp;регуляторные требования соблюдаются.</dd></div>
+      </div>
+      <h4>Критерии корректной коммуникации</h4>
+      <ul>
+      <li>Есть триггер или сегмент.</li>
+      <li>Есть ценность для&nbsp;пользователя.</li>
+      <li>Соблюдены лимиты.</li>
+      <li>Нет конфликтов с&nbsp;другими кампаниями.</li>
+      <li>Соответствует статусу пользователя.</li>
+      <li>Измеряется через метрики.</li>
+      </ul>
+      <div class="callout bad">
+      <span class="callout-label">Запрещенные практики</span>
+      Массовые рассылки без сегментации. Дублирование каналов без логики. Нерелевантные сообщения. Игнорирование отписок. Перегруз&nbsp;пользователя.
+      </div>
+      </section>
+
+      <section id="s2">
+<div class="section-head"><span class="section-num">02</span>&nbsp;<h2>Область применения</h2></div>
+<h4>Каналы</h4>
+<p>Текущие каналы коммуникации с&nbsp;охватом активной аудитории и&nbsp;статусом внедрения.<br>Активная аудитория&nbsp;&mdash; пользователи, для&nbsp;которых канал технически доступен и&nbsp;используется регулярно.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 18%">Канал</th>
+<th style="width: 22%">Охват</th>
+<th style="width: 18%">Статус</th>
+<th>Комментарий</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Email</strong></td>
+<td class="num">150k активных&nbsp;/ 500k всего</td>
+<td><span class="status-dot green"></span> Активно используется</td>
+<td>Основной канал транзакционных, сервисных и&nbsp;маркетинговых рассылок.</td>
+</tr>
+<tr>
+<td><strong>Push</strong></td>
+<td class="num">~140k</td>
+<td><span class="status-dot green"></span> Активно используется</td>
+<td>Единая база с&nbsp;In-app по&nbsp;идентификатору устройства.</td>
+</tr>
+<tr>
+<td><strong>In-app</strong></td>
+<td class="num">~140k</td>
+<td><span class="status-dot green"></span> Активно используется</td>
+<td>Доставляется внутри приложения; единая база с&nbsp;Push.</td>
+</tr>
+<tr>
+<td><strong>Stories (внутри приложения)</strong></td>
+<td class="num">&mdash;</td>
+<td><span class="status-dot green"></span> Активно используется</td>
+<td>Не&nbsp;персонализируется, единая лента для&nbsp;всех пользователей. См. раздел 06&nbsp;&laquo;Лимиты по&nbsp;каналам&raquo;.</td>
+</tr>
+<tr>
+<td><strong>Telegram Mini App</strong></td>
+<td class="num">~44k</td>
+<td><span class="status-dot orange"></span> На&nbsp;проде, активно не&nbsp;применяется</td>
+<td>Технически выкачен в&nbsp;продакшен, регулярных кампаний пока нет.</td>
+</tr>
+<tr>
+<td><strong>Telegram Bot</strong></td>
+<td class="num">&mdash;</td>
+<td><span class="status-dot blue"></span> На&nbsp;этапе внедрения</td>
+<td>Прорабатываются сценарии и&nbsp;интеграция с&nbsp;CDP.</td>
+</tr>
+<tr>
+<td><strong>WhatsApp</strong></td>
+<td class="num">&mdash;</td>
+<td><span class="status-dot blue"></span> На&nbsp;этапе внедрения</td>
+<td>Прорабатывается провайдер и&nbsp;шаблоны сообщений.</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td class="num">&mdash;</td>
+<td><span class="status-dot blue"></span> На&nbsp;этапе внедрения</td>
+<td>Будет использоваться для&nbsp;критичных коммуникаций (OTP, fraud) и&nbsp;точечных персональных предложений.</td>
+</tr>
+<tr>
+<td><strong>Notification Center</strong></td>
+<td class="num">&mdash;</td>
+<td><span class="status-dot blue"></span> На&nbsp;этапе внедрения</td>
+<td>Единый центр уведомлений в&nbsp;продукте&nbsp;&mdash;<br>агрегация всех типов сообщений.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>Типы коммуникаций</h4>
+<div class="defs">
+<div><dt>Системные&nbsp;/ обязательные</dt></div> <div><dd>Безопасность, OTP, regulatory, блокировки, остановка выплат. Не&nbsp;отключаются юзером.</dd></div>
+<div><dt>Транзакционные&nbsp;/ сервисные</dt></div> <div><dd>Операции, платежи, статусы заявок, напоминания, важные продуктовые изменения. Частично&nbsp;настраиваются юзером.</dd></div>
+<div><dt>Lifecycle</dt></div> <div><dd>Онбординг, активация, реактивация, win-back. Привязаны к&nbsp;жизненному циклу пользователя.</dd></div>
+<div><dt>Маркетинговые</dt></div> <div><dd>Промо, акции, новости, upsell, cross-sell, referral.</dd></div>
+</div>
+<h4>Аудитория</h4>
+<p>Новые, неактивированные, активные, мультипродуктовые, с&nbsp;риском оттока, VIP&nbsp;/ high-value.</p>
+<h4>Не&nbsp;регулируется политикой</h4>
+<ul>
+<li><strong>Support.</strong> Коммуникации службы поддержки.</li>
+<li><strong>Customer Relations.</strong> Ручные персональные коммуникации, не&nbsp;масштабируемые через CRM.</li>
+<li><strong>Sales.</strong> Переписка sales-менеджеров с&nbsp;потенциальными клиентами.</li>
+</ul>
+<p>Массовые и&nbsp;полуавтоматические коммуникации от&nbsp;команды CRM всегда подпадают под политику.</p>
+<div class="callout">
+<span class="callout-label">Обязательность</span>
+Все CRM-коммуникации реализуются через централизованные системы (<code>customer.io</code> и&nbsp;связанные инструменты). Запуск&nbsp;вне установленного процесса недопустим.
+</div>
+</section>
+
+      <section id="s3">
+<div class="section-head"><span class="section-num">03</span>&nbsp;<h2>Сегментация</h2></div>
+<h4>Принципы</h4>
+<ul>
+<li>Сегментация обязательна для&nbsp;всех коммуникаций.</li>
+<li>Основа: <strong>events + attributes</strong>. Manual-сегменты&nbsp;&mdash; только как исключение или дополнение.</li>
+<li>Сегменты отражают актуальное состояние пользователя и&nbsp;воспроизводимы в&nbsp;системе.</li>
+<li>Критичные сегменты (онбординг, KYC) логически изолированы.</li>
+</ul>
+<h4>Exclude-сегменты</h4>
+<p>Используются для&nbsp;предотвращения конфликтов кампаний, дублирования и&nbsp;перегрузки. Маркируются единым тегом <code>Exclude</code>. Каждый запуск кампании обязан учитывать релевантные exclude-сегменты.</p>
+
+<h4>Реестр exclude-сегментов</h4>
+<p>Текущий список exclude-сегментов в&nbsp;Customer.io. Каждый сегмент&nbsp;&mdash; на&nbsp;отдельную причину: качество базы (баунсы, боты), технические тестовые данные, регуляторика, изоляция онбординг-флоу, продуктовая изоляция (Mining App, B2B). При запуске любой маркетинговой рассылки через Coinhold workspace&nbsp;&mdash; все эти сегменты добавляются в&nbsp;exclude по&nbsp;умолчанию.</p>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 30%">Сегмент</th>
+<th>Что внутри и&nbsp;зачем исключаем</th>
+<th style="width: 14%">Тег&nbsp;/ тип</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Subaccounts</strong> <br /><code>id 26</code> &middot; ~30k</td>
+<td>Субаккаунты пользователей. Технические аккаунты, не&nbsp;отдельные люди&nbsp;&mdash; рассылка на&nbsp;них не&nbsp;имеет смысла.</td>
+<td><span class="pill">Quality</span></td>
+</tr>
+<tr>
+<td><strong>Bounced</strong> <br /><code>id 144</code> &middot; ~7.5k</td>
+<td>Почты с&nbsp;ошибками доставки. Повторная отправка не&nbsp;нужна&nbsp;&mdash; только вредит sender reputation.</td>
+<td><span class="pill">Quality</span> &middot; <span class="pill">Testing QA</span></td>
+</tr>
+<tr>
+<td><strong>alias + test emcd</strong> <br /><code>id 253</code> &middot; ~2.4k</td>
+<td>Внутренние алиасы EMCD, тестовые почты сотрудников. В&nbsp;рассылках не&nbsp;нужны.</td>
+<td><span class="pill">Testing QA</span></td>
+</tr>
+<tr>
+<td><strong>EMCD&nbsp;AUTO&nbsp;| Test</strong> <br /><code>id 302</code> &middot; ~3k</td>
+<td>Корпоративные почты EMCD, в&nbsp;том числе нерабочие почты бывших сотрудников. Если не&nbsp;хотим слать рассылку на&nbsp;все эти адреса&nbsp;&mdash; исключаем.</td>
+<td><span class="pill">Testing QA</span></td>
+</tr>
+<tr>
+<td><strong>deleted</strong> <br /><code>id 395</code> &middot; ~1.8k</td>
+<td>Пользователи, удаленные в&nbsp;Customer.io.</td>
+<td><span class="pill">Quality</span></td>
+</tr>
+<tr>
+<td><strong>EMCD Mining App</strong> <br /><code>id 892</code> &middot; ~1k</td>
+<td>Юзеры приложения EMCD Mining (Only Mining). Из&nbsp;workspace Coinhold на&nbsp;них не&nbsp;отправляем&nbsp;&mdash; это отдельный продукт со&nbsp;своими коммуникациями.</td>
+<td><span class="pill">Product isolation</span></td>
+</tr>
+<tr>
+<td><strong>Onboarding&nbsp;| Reg in&nbsp;last 7d</strong> <br /><code>id 1294</code> &middot; ~2.3k</td>
+<td>Юзеры первой недели после регистрации. На&nbsp;них шлем только онбординговую цепочку&nbsp;&mdash; не&nbsp;&laquo;замыливаем&raquo; анонсами и&nbsp;апдейтами, пока пользователь не&nbsp;активировался.</td>
+<td><span class="pill">Onboarding</span> &middot; <em>owner: Alexander Starcev</em></td>
+</tr>
+<tr>
+<td><strong>Performa B2B Users</strong> <br /><code>id 1440</code> &middot; ~160</td>
+<td>Юзеры продукта Performa (B2B). На&nbsp;них маркетинг из&nbsp;Coinhold не&nbsp;отправляем.</td>
+<td><span class="pill">Product isolation</span></td>
+</tr>
+<tr>
+<td><strong>EU&nbsp;countries</strong> <br /><code>id 959</code> &middot; ~27k</td>
+<td><code>cio_iso_country</code> in&nbsp;EU. Пользователи из&nbsp;стран Европейского Союза. По&nbsp;регуляторике (GDPR&nbsp;/ MICA) рекламу не&nbsp;шлем.</td>
+<td><span class="pill">Regulatory</span></td>
+</tr>
+<tr>
+<td><strong>Bots Reg</strong> <br /><code>id 988</code> &middot; ~6.8k</td>
+<td>Почты ботов и&nbsp;автоматических регистраций. Никогда не&nbsp;открывают письма&nbsp;&mdash; портят open rate и&nbsp;sender reputation.</td>
+<td><span class="pill">Quality</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>Группы exclude-сегментов</h4>
+<div class="defs">
+<div><dt>Quality</dt></div> <div><dd>Технический мусор: баунсы, удаленные, боты, субаккаунты. Применяем <strong>ко&nbsp;всем рассылкам без исключений</strong>, включая транзакционные дайджесты&nbsp;&mdash; это не&nbsp;люди, доставлять некому.</dd></div>
+<div><dt>Testing QA</dt></div> <div><dd>Внутренние и&nbsp;тестовые адреса EMCD. Применяем ко&nbsp;всем продакшен-рассылкам. На&nbsp;стейдже&nbsp;/ в&nbsp;превью&nbsp;&mdash; наоборот, остаются.</dd></div>
+<div><dt>Product isolation</dt></div> <div><dd>Юзеры других продуктов экосистемы (Mining App, Performa B2B). Применяем при рассылках из&nbsp;Coinhold workspace, чтобы не&nbsp;пересекать продуктовую коммуникацию.</dd></div>
+<div><dt>Onboarding</dt></div> <div><dd>Юзеры в&nbsp;активной онбординг-цепочке. Исключаем из&nbsp;всех маркетинговых broadcast&rsquo;ов, пока не&nbsp;завершат активацию или не&nbsp;пройдет 7&nbsp;дней.</dd></div>
+<div><dt>Regulatory</dt></div> <div><dd>GEO-исключения по&nbsp;регуляторике (EU, при необходимости&nbsp;&mdash; другие юрисдикции). Применяем ко&nbsp;<strong>всем маркетинговым</strong> рассылкам.</dd></div>
+</div>
+
+<div class="callout">
+<span class="callout-label">По&nbsp;умолчанию</span>
+Любая маркетинговая broadcast-кампания в&nbsp;Coinhold workspace стартует с&nbsp;примененным набором: <strong>Quality + Testing QA + Regulatory</strong>. Onboarding и&nbsp;Product isolation добавляются по&nbsp;контексту. VIP-сегмент (см. раздел 13)&nbsp;&mdash; отдельный exclude для&nbsp;массовых кампаний.
+</div>
+
+<h4>Требования к&nbsp;сегменту</h4>
+<ul>
+<li>Четкое определение входа и&nbsp;выхода.</li>
+<li>Строится на&nbsp;events&nbsp;/ attributes или обоснованном manual-источнике.</li>
+<li>Корректное название, описание, теги (владелец, продукт, тип кампаний).</li>
+<li>Используется консистентно во&nbsp;всех связанных кампаниях.</li>
+</ul>
+<div class="callout warn">
+<span class="callout-label">Дефект</span>
+Коммуникации без сегментации, без учета exclude-логики, или с&nbsp;неактуальным определением сегмента считаются дефектом и&nbsp;подлежат остановке.
+</div>
+</section>
+
+      <section id="s4">
+<div class="section-head"><span class="section-num">04</span>&nbsp;<h2>Приоритеты коммуникаций</h2></div>
+<p>Все коммуникации делятся на&nbsp;четыре типа. Эта классификация&nbsp;&mdash; единая по&nbsp;всему документу: те&nbsp;же названия используются в&nbsp;области применения (раздел&nbsp;02), сводных лимитах (05), лимитах по&nbsp;каналам (06), карантине, дневном бюджете и&nbsp;времени отправки.</p>
+<p>Приоритет определяет, чье сообщение &laquo;выигрывает&raquo; при конфликте&nbsp;&mdash; сверху вниз.</p>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 22%">Тип</th>
+<th>Что входит</th>
+<th style="width: 16%">Учет unsubscribe</th>
+<th style="width: 22%">Поведение при превышении лимита</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Системные&nbsp;/ обязательные</strong> <br /><span class="status-dot red"></span><em>Максимальный приоритет</em></td>
+<td>Безопасность, fraud, OTP, regulatory notice, 2FA, блокировка аккаунта, остановка выплат по&nbsp;майнингу.</td>
+<td><span class="x">✕</span> Не&nbsp;учитывается</td>
+<td>Отправляется всегда. Лимиты не&nbsp;применяются.</td>
+</tr>
+<tr>
+<td><strong>Транзакционные&nbsp;/ сервисные</strong> <br /><span class="status-dot orange"></span><em>Высокий приоритет</em></td>
+<td>Платеж получен&nbsp;/ отправлен, failed transaction, статусы заявок и&nbsp;операций, напоминания о&nbsp;платеже, важные продуктовые изменения.</td>
+<td>Частично&nbsp;&mdash; по&nbsp;логике кампании</td>
+<td>Отправляется даже при превышении маркетингового cap.</td>
+</tr>
+<tr>
+<td><strong>Lifecycle</strong> <br /><span class="status-dot blue"></span><em>Средний приоритет</em></td>
+<td>Онбординг, активация, реактивация, win-back, NPS, привязанные к&nbsp;этапу жизненного цикла пользователя.</td>
+<td><span class="check">✓</span> Учитывается</td>
+<td>Учитывает лимиты.</td>
+</tr>
+<tr>
+<td><strong>Маркетинговые</strong> <br /><span class="status-dot green"></span><em>Низкий приоритет</em></td>
+<td>Промо, акции, новости, upsell, cross-sell, referral, partner offers.</td>
+<td><span class="check">✓</span> Всегда учитывается</td>
+<td>Срезается первым при превышении лимитов.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<span class="callout-label">Правило разрешения конфликтов</span>
+Системные &rarr; Транзакционные &rarr; Lifecycle &rarr; Маркетинговые. Конфликты между кампаниями одного типа решаются через&nbsp;exclude-сегменты и&nbsp;правила оркестрации (раздел 10).
+</div>
+</section>
+
+      <section id="s5">
+<div class="section-head"><span class="section-num">05</span>&nbsp;<h2>Сводные лимиты</h2></div>
+<p>Базовая таблица лимитов на&nbsp;пользователя по&nbsp;типам сообщений. Типы&nbsp;&mdash; те&nbsp;же четыре, что в&nbsp;разделе 04. Глобальный&nbsp;счетчик маркетинга считается на&nbsp;уровне юзера, не&nbsp;канала и&nbsp;не&nbsp;продукта.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 24%">Тип</th>
+<th style="width: 12%">Сутки</th> <th style="width: 12%">Неделя</th> <th style="width: 12%">Месяц</th>
+<th>Управление</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Системные&nbsp;/ обязательные</strong></td>
+<td class="num">&infin;</td> <td class="num">&infin;</td> <td class="num">&infin;</td>
+<td>Не&nbsp;лимитируются.<br>Юзер не&nbsp;может отписаться.</td>
+</tr>
+<tr>
+<td><strong>Транзакционные&nbsp;/ сервисные</strong></td>
+<td class="num">по&nbsp;продукту</td> <td class="num">по&nbsp;продукту</td> <td class="num">по&nbsp;продукту</td>
+<td>Каждый продукт задает лимиты. Юзер&nbsp;настраивает в&nbsp;Subscription Center.</td>
+</tr>
+<tr>
+<td><strong>Lifecycle</strong></td>
+<td class="num">по&nbsp;сценарию</td> <td class="num">по&nbsp;сценарию</td> <td class="num">по&nbsp;сценарию</td>
+<td>Лимит&nbsp;&mdash; внутри конкретного сценария (онбординг, реактивация). Уважает маркетинговый лимит.</td>
+</tr>
+<tr>
+<td><strong>Маркетинговые</strong></td>
+<td class="num good">&le; 1</td> <td class="num good">&le; 2</td> <td class="num good">&le; 8</td>
+<td>Между сообщениями&nbsp;&mdash; 2&ndash;3 дня (рекомендовано 3). Лимит считается по&nbsp;email + push + in-app суммарно.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>Что считается &laquo;одним маркетинговым касанием&raquo;</h4>
+<p>Одно касание&nbsp;&mdash; это <strong>одно маркетинговое сообщение по&nbsp;одной теме&nbsp;/ продукту</strong>, отправленное в&nbsp;доступные пользователю каналы. Если кампания идет связкой push + email или push + in-app&nbsp;&mdash; это одно касание, а&nbsp;не&nbsp;два-три. Канал выбирается по&nbsp;доступности и&nbsp;приоритету продукта; если у&nbsp;юзера активен только email&nbsp;&mdash; уйдет только email.</p>
+<p>Если кампания состоит из&nbsp;последовательности писем (например, 5&nbsp;писем за&nbsp;3&nbsp;дня по&nbsp;одной теме)&nbsp;&mdash; это <strong>несколько касаний</strong>, и&nbsp;каждое съедает квоту. Перед запуском такой кампании нужно проверить, что суммарно она не&nbsp;превышает суточные&nbsp;/ недельные&nbsp;/ месячные лимиты юзера.</p>
+
+<div class="metric-grid">
+<div class="metric">
+<div class="metric-label">В&nbsp;сутки</div>
+<div class="metric-value">1<span class="unit">касание</span></div>
+<div class="metric-note">Одна тема&nbsp;/ один продукт&nbsp;&mdash; в&nbsp;доступные каналы (email + push + in-app в&nbsp;связке).</div>
+</div>
+<div class="metric">
+<div class="metric-label">В&nbsp;неделю</div>
+<div class="metric-value">&le; 2<span class="unit">касания</span></div>
+<div class="metric-note">Между касаниями&nbsp;&mdash; минимум 2&ndash;3 дня перерыва (рекомендовано 3).</div>
+</div>
+<div class="metric">
+<div class="metric-label">В&nbsp;месяц</div>
+<div class="metric-value">&le; 8<span class="unit">касаний</span></div>
+<div class="metric-note">Целевая частота&nbsp;&mdash; около 1&ndash;2 коммуникаций в&nbsp;неделю. Лимит считается суммарно по&nbsp;всем каналам.</div>
+</div>
+</div>
+</section>
+
+      <section id="s6">
+<div class="section-head"><span class="section-num">06</span>&nbsp;<h2>Лимиты по&nbsp;каналам</h2></div>
+<p>Лимиты по&nbsp;каждому каналу для&nbsp;каждого из&nbsp;четырех типов (см. раздел 04). Глобальный маркетинговый счетчик &laquo;2/нед, 8/мес&raquo; считается на&nbsp;уровне юзера: одно маркетинговое касание (в&nbsp;один или несколько каналов сразу) занимает квоту юзера, а&nbsp;не&nbsp;канала.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th>Канал</th>
+<th>Системные</th>
+<th>Транзакционные&nbsp;/ сервисные</th>
+<th>Lifecycle</th>
+<th>Маркет.&nbsp;/ сутки</th> <th>Маркет.&nbsp;/ неделя</th> <th>Маркет.&nbsp;/ месяц</th>
+</tr></thead>
+<tbody>
+<tr><td><strong>Push</strong></td> <td class="num">&infin;</td> <td class="num">&infin; *</td> <td class="num">по&nbsp;сценарию</td> <td class="num good">&le; 1</td> <td class="num good">&le; 2</td> <td class="num good">&le; 8</td></tr>
+<tr><td><strong>Email</strong></td> <td class="num">&infin;</td> <td class="num">&infin; *</td> <td class="num">по&nbsp;сценарию</td> <td class="num good">&le; 1</td> <td class="num good">&le; 2</td> <td class="num good">&le; 8</td></tr>
+<tr><td><strong>In-app</strong></td> <td class="num">&infin;</td> <td class="num">&infin;</td> <td class="num">по&nbsp;сценарию</td> <td class="num good">&le; 1&nbsp;/ сессия</td> <td class="num good">&le; 2</td> <td class="num good">&le; 8</td></tr>
+<tr><td><strong>SMS</strong></td> <td class="num">&infin;</td> <td class="num warn">только критичное</td> <td class="num warn">только KYC</td> <td class="num good">&le; 1</td> <td class="num good">&le; 1</td> <td class="num good">&le; 2&ndash;3</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size: 12.5px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;">* Транзакционные &laquo;без лимита&raquo; = &laquo;по&nbsp;событию&raquo;. Если событий по&nbsp;юзеру за&nbsp;день &gt; 5&ndash;7, продукт обязан агрегировать в&nbsp;дайджест.</p>
+<h3>Особенности каналов</h3>
+<details open>
+<summary><strong>Push</strong>&nbsp;&mdash; самый чувствительный канал</summary>
+<div>Отключается одним движением и&nbsp;приводит к&nbsp;удалению приложения.&nbsp;<strong>71%</strong> юзеров удаляют приложения именно из-за избыточных уведомлений. Маркетинговые push отправляются только в&nbsp;рабочее время <code>10:00–21:00</code> по&nbsp;часовому поясу юзера. Между маркетинговыми push&nbsp;&mdash; минимум 2&ndash;3&nbsp;дня. Quiet hours <code>22:00–09:00</code> (кроме Системных).</div>
+</details>
+<details>
+<summary><strong>Email</strong>&nbsp;&mdash; про репутацию домена</summary>
+<div>Терпимее push, но&nbsp;чувствителен к&nbsp;sender reputation. Слишком частые рассылки &rarr; жалобы на&nbsp;спам &rarr; падение deliverability для&nbsp;всех писем, включая транзакционные. Требует обязательного карантина неактивных адресов. Норма unsubscribe&nbsp;&mdash; <code>0,1–0,5%</code> за&nbsp;кампанию.</div>
+</details>
+<details>
+<summary><strong>In-app</strong>&nbsp;&mdash; наименее раздражающий</summary>
+<div>Юзер уже в&nbsp;продукте. Не&nbsp;более 1&nbsp;маркетингового сообщения за&nbsp;сессию. Не&nbsp;показывать одновременно с&nbsp;критическим транзакционным экраном.</div>
+</details>
+<details>
+<summary><strong>SMS</strong>&nbsp;&mdash; самый дорогой</summary>
+<div>Транзакционные SMS&nbsp;&mdash; только когда push/email недоступны или критичность очень высокая (OTP, VIP-сегмент). Маркетинговые SMS&nbsp;&mdash; крайне ограниченно: только для&nbsp;важных персональных уведомлений и&nbsp;предложений. Локальные часы строго <code>10:00–20:00</code>.</div>
+</details>
+</section>
+
+<section id="s7">
+<div class="section-head"><span class="section-num">07</span>&nbsp;<h2>Дневной бюджет: маркетинг vs&nbsp;транзакционные</h2></div>
+<p>Транзакционные сообщения имеют свои лимиты по&nbsp;продукту и&nbsp;не&nbsp;&laquo;съедают&raquo; маркетинговый бюджет. Главное&nbsp;&mdash;&nbsp;соблюдать маркетинговые лимиты отдельно.&nbsp;5&nbsp;транзакционных сообщений за&nbsp;день не&nbsp;блокируют 1&nbsp;маркетинговое в&nbsp;этот&nbsp;же день, но&nbsp;это маркетинговое съедает дневной лимит, и&nbsp;завтра маркетинга быть не&nbsp;должно.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Сценарий за&nbsp;день</th> <th>Маркет сегодня</th> <th>Что с&nbsp;завтра</th></tr></thead>
+<tbody>
+<tr><td><strong>0&nbsp;транзакционных, 0&nbsp;маркетинговых</strong></td> <td><span class="check">✓</span> Можно 1</td> <td>Возможно, при соблюдении интервала 2&ndash;3 дня и&nbsp;недельного лимита.</td></tr>
+<tr><td><strong>3&ndash;5&nbsp;транзакционных, 0&nbsp;маркетинговых</strong></td> <td><span class="check">✓</span> Можно 1</td> <td>Завтра&nbsp;&mdash; пауза по&nbsp;маркетингу.</td></tr>
+<tr><td><strong>Уже 1&nbsp;маркетинговое сегодня</strong></td> <td><span class="x">✕</span> Дневной лимит исчерпан</td> <td>2&ndash;3 дня без маркетинга.</td></tr>
+<tr><td><strong>За&nbsp;неделю 2&nbsp;маркетинговых</strong></td> <td><span class="x">✕</span> Недельный лимит исчерпан</td> <td>Возобновление со&nbsp;следующей недели.</td></tr>
+<tr><td><strong>За&nbsp;месяц 8&nbsp;маркетинговых</strong></td> <td><span class="x">✕</span> Месячный лимит исчерпан</td> <td>Возобновление со&nbsp;следующего календарного месяца.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout">
+<span class="callout-label">Главное правило</span>
+Все три счетчика (день&nbsp;/ неделя&nbsp;/ месяц) проверяются одновременно. Отправка отменяется, если хоть один исчерпан. Транзакционные идут параллельно по&nbsp;своим правилам и&nbsp;не&nbsp;считаются в&nbsp;маркетинговый бюджет.
+</div>
+</section>
+
+      <section id="s8">
+<div class="section-head"><span class="section-num">08</span>&nbsp;<h2>Карантин при неактивности</h2></div>
+<p>Если юзер перестал реагировать на&nbsp;канал&nbsp;&mdash; продолжать отправку нельзя. Это вредит метрикам (sender reputation для&nbsp;email, retention для&nbsp;push) и&nbsp;в&nbsp;итоге убивает доставляемость даже системных сообщений. Каждый канал имеет свой карантинный флоу.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th style="width: 12%">Канал</th> <th style="width: 28%">Триггер</th> <th>Действие</th></tr></thead>
+<tbody>
+<tr><td><strong>Email</strong></td> <td>Нет открытий и&nbsp;кликов <strong>60&nbsp;дней</strong></td> <td>Снижаем частоту до&nbsp;1&nbsp;письма&nbsp;/ 2&nbsp;недели; запускаем re-engagement. Транзакционные продолжают идти.</td></tr>
+<tr><td><strong>Email</strong></td> <td>Нет открытий и&nbsp;кликов <strong>90&nbsp;дней</strong></td> <td>Карантин: маркетинг прекращается. Финальное письмо &laquo;подтвердите подписку&raquo;.</td></tr>
+<tr><td><strong>Email</strong></td> <td>Нет реакции на&nbsp;финальное письмо 14&nbsp;дней&nbsp;/ неактивен 6&nbsp;мес.</td> <td><strong>Hard-suppression</strong> на&nbsp;уровне Customer.io. Только транзакционные. Защита sender reputation.</td></tr>
+<tr><td><strong>Email</strong></td> <td>Hard bounce&nbsp;/ spam complaint</td> <td>Немедленный hard-suppression на&nbsp;любые маркетинговые письма.</td></tr>
+<tr><td><strong>Push</strong></td> <td>Нет открытий push <strong>30&nbsp;дней</strong></td> <td>Снижаем частоту до&nbsp;1/нед; усиливаем персонализацию.</td></tr>
+<tr><td><strong>Push</strong></td> <td>Нет открытий push <strong>60&nbsp;дней</strong></td> <td>Карантин: маркетинговые push прекращаются. Транзакционные продолжаются. Re-engage через email или in-app.</td></tr>
+<tr><td><strong>Push</strong></td> <td>Юзер отключил push на&nbsp;уровне ОС</td> <td>Помечается как push-disabled. Маркетинг переключается на&nbsp;email/in-app. Раз в&nbsp;30&nbsp;дней&nbsp;&mdash; мягкое предложение включить push через in-app или email.</td></tr>
+<tr><td><strong>In-app</strong></td> <td>Не&nbsp;открывал приложение 30&nbsp;дней</td> <td>In-app не&nbsp;сработает&nbsp;&mdash; переключаемся на&nbsp;email и&nbsp;push (если активны). После возврата&nbsp;&mdash; приоритет welcome-back, не&nbsp;промо.</td></tr>
+<tr><td><strong>SMS</strong></td> <td>Жалоба, отписка ключевым словом (СТОП)</td> <td>Немедленный hard-suppression по&nbsp;SMS. Маркетинг&nbsp;&mdash; на&nbsp;другие каналы; транзакционные SMS&nbsp;&mdash; только критичные.</td></tr>
+<tr><td><strong>Все каналы</strong></td> <td>Глобальная отписка в&nbsp;Subscription Center</td> <td>Глобальный suppression на&nbsp;маркетинг. Системные и&nbsp;транзакционные продолжаются.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Спящий сегмент: пороги по&nbsp;каналам и&nbsp;типам</h3>
+<p>&laquo;Спящий&raquo;&nbsp;&mdash; не&nbsp;одно состояние, а&nbsp;несколько. Юзер может игнорировать маркетинг, но&nbsp;открывать продуктовые письма (digest, статусы)&nbsp;&mdash; это <strong>не</strong>&nbsp;спящий, это просто отказ от&nbsp;маркетинга. Спящим считаем того, кто не&nbsp;открывает <em>в&nbsp;принципе</em>. Поэтому отдельные пороги для&nbsp;маркетинга, продуктовых/сервисных и&nbsp;отдельно для&nbsp;каждого канала.</p>
+
+<p>Ключевое разделение: <strong>отсутствие открытий по&nbsp;типу</strong> сообщений, не&nbsp;суммарно. Если юзер не&nbsp;открыл 5&nbsp;маркетинговых писем&nbsp;&mdash; снижаем маркетинг. Если не&nbsp;открыл ни&nbsp;маркетинг, ни&nbsp;продуктовое за&nbsp;тот&nbsp;же период&nbsp;&mdash; это уже спящий.</p>
+
+<h4>Email</h4>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 18%">Уровень</th>
+<th>Маркетинговые</th>
+<th>Продуктовые&nbsp;/ сервисные</th>
+<th style="width: 24%">Действие</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Снижение частоты</strong> <br /><span class="pill" style="color:var(--blue);border-color:var(--blue)">L1</span></td>
+<td>5&nbsp;писем за&nbsp;месяц, 0&nbsp;открытий</td>
+<td>Открывает нормально</td>
+<td>Снижаем маркетинг до&nbsp;1&nbsp;/ 2&nbsp;нед. Продуктовые идут как раньше&nbsp;&mdash; юзеру неинтересен <em>маркетинг</em>, но&nbsp;не&nbsp;канал.</td>
+</tr>
+<tr>
+<td><strong>Карантин маркетинга</strong> <br /><span class="pill" style="color:var(--orange);border-color:var(--orange)">L2</span></td>
+<td>10&nbsp;писем за&nbsp;полгода, 0&nbsp;открытий</td>
+<td>Открывает изредка</td>
+<td>Маркетинг полностью на&nbsp;паузу. Финальное re-engagement письмо &laquo;все еще актуально?&raquo;. Продуктовые продолжаются.</td>
+</tr>
+<tr>
+<td><strong>Спящий</strong> <br /><span class="pill" style="color:var(--red);border-color:var(--red)">L3</span></td>
+<td>20&nbsp;писем за&nbsp;год, 0&nbsp;открытий</td>
+<td>0&nbsp;открытий за&nbsp;тот&nbsp;же период</td>
+<td><strong>Hard-suppression</strong> для&nbsp;всех писем кроме Системных и&nbsp;Транзакционных (fraud, платежи). Юзер &laquo;не&nbsp;в&nbsp;канале&raquo;&nbsp;&mdash; продолжать вредно для&nbsp;sender reputation.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>Push</h4>
+<p>Push открывают <strong>заметно реже</strong> email&nbsp;&mdash; open rate 4&ndash;14% против 20&ndash;30% у&nbsp;email. Поэтому пороги выше: одного-двух неоткрытых push мало, чтобы делать выводы.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 18%">Уровень</th>
+<th>Маркетинговые</th>
+<th>Продуктовые&nbsp;/ сервисные</th>
+<th style="width: 24%">Действие</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Снижение частоты</strong> <br /><span class="pill" style="color:var(--blue);border-color:var(--blue)">L1</span></td>
+<td>10&nbsp;push за&nbsp;месяц, 0&nbsp;открытий</td>
+<td>Открывает нормально</td>
+<td>Снижаем маркетинговые push до&nbsp;1&nbsp;/ нед. Усиливаем персонализацию.</td>
+</tr>
+<tr>
+<td><strong>Карантин маркетинга</strong> <br /><span class="pill" style="color:var(--orange);border-color:var(--orange)">L2</span></td>
+<td>15&nbsp;push за&nbsp;месяц, 0&nbsp;открытий</td>
+<td>Открывает изредка</td>
+<td>Маркетинговые push прекращаются. Продуктовые&nbsp;/ сервисные продолжаются. Re-engage через email или in-app.</td>
+</tr>
+<tr>
+<td><strong>Спящий</strong> <br /><span class="pill" style="color:var(--red);border-color:var(--red)">L3</span></td>
+<td>30&nbsp;push за&nbsp;квартал, 0&nbsp;открытий</td>
+<td>0&nbsp;открытий за&nbsp;тот&nbsp;же период</td>
+<td>Полная пауза push на&nbsp;любые типы кроме Системных. Переключаемся на&nbsp;email и&nbsp;in-app. Раз в&nbsp;90&nbsp;дней&nbsp;&mdash; мягкое in-app предложение пересобрать push-настройки.</td>
+</tr>
+<tr>
+<td><strong>OS-level off</strong> <br /><span class="pill" style="color:var(--text-muted);border-color:var(--text-muted)">L4</span></td>
+<td colspan="2">Юзер отключил push на&nbsp;уровне ОС&nbsp;&mdash; это видно по&nbsp;delivery failures. No&nbsp;device.</td>
+<td>Push больше технически не&nbsp;доходит. Помечаем как push-disabled, маркетинг через email и&nbsp;in-app.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>In-app&nbsp;&mdash; уровни вовлеченности</h4>
+<p>In-app отличается от&nbsp;email и&nbsp;push: <strong>не&nbsp;добавляем в&nbsp;карантин</strong>. Канал работает только тогда, когда юзер сам открыл приложение, и&nbsp;&laquo;не&nbsp;открыл сообщение&raquo; здесь означает &laquo;редко заходит&raquo;&nbsp;&mdash; это не&nbsp;повод снижать частоту, это повод <strong>усиливать другие каналы</strong>.</p>
+<p>Базовый сегмент идентификации: <code>Device True</code> &mdash; у&nbsp;юзера есть устройство, in-app технически доступен. Дальше&nbsp;&mdash; три уровня вовлеченности.</p>
+
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th style="width: 18%">Уровень</th>
+<th>Триггер</th>
+<th style="width: 40%">Действие</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Низкая активность</strong> <br /><span class="pill" style="color:var(--blue);border-color:var(--blue)">L1</span></td>
+<td><code>Device True</code> + есть регулярные in-app sent, но&nbsp;in-app не&nbsp;открывает &rarr; редко заходит в&nbsp;приложение</td>
+<td>In-app сообщения копятся в&nbsp;очереди. Параллельно подталкиваем юзера через email и&nbsp;push (если активны).</td>
+</tr>
+<tr>
+<td><strong>Средняя</strong> <br /><span class="pill" style="color:var(--orange);border-color:var(--orange)">L2</span></td>
+<td>Не&nbsp;открывал приложение 30&nbsp;дней</td>
+<td>In-app фактически не&nbsp;работает. Все коммуникации через email и&nbsp;push. Очередь копящихся in-app сбрасываем&nbsp;&mdash; после возврата приоритет welcome-back, не&nbsp;накопленные промо.</td>
+</tr>
+<tr>
+<td><strong>Высокая</strong> <br /><span class="pill" style="color:var(--red);border-color:var(--red)">L3</span></td>
+<td>Не&nbsp;открывал приложение 90&nbsp;дней</td>
+<td>Юзер &laquo;выпал&raquo; из&nbsp;приложения. Параллельно проверяем email и&nbsp;push&nbsp;&mdash; может быть, спящий и&nbsp;там. Win-back через активные каналы.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>Отдельный сегмент: &laquo;in-app шли, но&nbsp;не&nbsp;открывались&raquo;</h4>
+<p>Юзеры с <code>Device True</code>, которым in-app отправлялись регулярно, но&nbsp;<strong>ни&nbsp;разу не&nbsp;открывались</strong>. Это маркер того, что in-app для&nbsp;этого юзера не&nbsp;работает: или он&nbsp;не&nbsp;видит уведомлений, или не&nbsp;реагирует на&nbsp;них в&nbsp;принципе. Не&nbsp;стоит продолжать тратить квоту in-app на&nbsp;таких&nbsp;&mdash; переключаемся на&nbsp;другие каналы по&nbsp;умолчанию.</p>
+
+<h4>Если юзер спит во&nbsp;всех каналах одновременно</h4>
+<p>Это самый &laquo;жесткий&raquo; спящий сегмент. Юзер не&nbsp;открывает email, не&nbsp;реагирует на&nbsp;push, не&nbsp;заходит в&nbsp;приложение. Действия:</p>
+<ul>
+<li>Все маркетинговые коммуникации&nbsp;&mdash; на&nbsp;паузу. Нужен сильный, в&nbsp;идеале персонализированный, оффер.</li>
+<li>Продуктовые&nbsp;/ сервисные&nbsp;&mdash; оставляем только критичные (изменения по&nbsp;продукту, безопасность, регуляторика).</li>
+<li>Win-back кампания через любые доступные или новые каналы (email&nbsp;/ push&nbsp;/ site, 3&nbsp;письма за&nbsp;4&ndash;6&nbsp;недель) с&nbsp;явной ценностью или эксклюзивным офером&nbsp;&mdash; последний шанс.</li>
+<li>Если win-back не&nbsp;сработал &rarr; <strong>hard-suppression на&nbsp;все маркетинговые каналы</strong>. В&nbsp;базе остается только для&nbsp;Системных и&nbsp;Транзакционных (fraud, платежи).</li>
+<li>VIP-юзеры в&nbsp;этом состоянии&nbsp;&mdash; отдельный триггер для&nbsp;Customer Success (см. раздел 13).</li>
+</ul>
+
+<h4>Принципы карантина</h4>
+<ul>
+<li><strong>Карантин &ne; отписка.</strong> Юзер остается в&nbsp;базе, частота снижается или маркетинг приостанавливается.</li>
+<li><strong>Транзакционные и&nbsp;системные продолжают идти</strong>&nbsp;&mdash; юзер остается клиентом и&nbsp;получает критичную информацию.</li>
+<li><strong>Re-engagement обязателен</strong> перед hard-suppression: 1&ndash;2 письма (4&ndash;6 недель окна).</li>
+<li><strong>При отключении канала</strong> переключаемся на&nbsp;доступные каналы автоматически.</li>
+<li><strong>Логика карантина живет в&nbsp;Customer.io</strong>, на&nbsp;уровне профиля юзера&nbsp;&mdash; применяется ко&nbsp;всем продуктам сразу.</li>
+</ul>
+</section>
+
+<section id="s9">
+<div class="section-head"><span class="section-num">09</span>&nbsp;<h2>Время отправки</h2></div>
+<p>Когда отправлять&nbsp;&mdash; отдельное измерение от&nbsp;того, сколько отправлять. Правильное время повышает open rate и&nbsp;снижает раздражение, неправильное&nbsp;&mdash; создает жалобы и&nbsp;отписки даже при безупречном контенте.</p>
+
+<h4>Базовое окно</h4>
+<p>Маркетинговые сообщения отправляются <strong>в&nbsp;будние дни с&nbsp;10:00 до&nbsp;20:00</strong> по&nbsp;локальному времени пользователя. Это дневное окно показывает лучшие open rate в&nbsp;наших каналах и&nbsp;совпадает с&nbsp;рабочим временем большинства аудитории.</p>
+
+<div class="metric-grid">
+<div class="metric">
+<div class="metric-label">Будни</div>
+<div class="metric-value">10&mdash;20<span class="unit">локального</span></div>
+<div class="metric-note">Базовое окно для&nbsp;маркетинга и&nbsp;сервисных сообщений.</div>
+</div>
+<div class="metric">
+<div class="metric-label">Выходные</div>
+<div class="metric-value">избегаем<span class="unit"></span></div>
+<div class="metric-note">Запрета нет, но&nbsp;стараемся выпускать в&nbsp;будни.</div>
+</div>
+<div class="metric">
+<div class="metric-label">Quiet hours</div>
+<div class="metric-value">20&mdash;10<span class="unit">локального</span></div>
+<div class="metric-note">Маркетинг и&nbsp;push не&nbsp;отправляем (кроме Системных).</div>
+</div>
+</div>
+
+<h4>Правила по&nbsp;дням и&nbsp;каналам</h4>
+<div class="tbl-wrap">
+<table>
+<thead><tr>
+<th>Канал</th> <th>Будни</th> <th>Выходные</th> <th>Quiet hours</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>Email</strong></td>
+<td><span class="check">✓</span> 10&ndash;20 базовое окно</td>
+<td>Можно, но&nbsp;избегаем&nbsp;&mdash; приоритет будням</td>
+<td>Не&nbsp;отправляем</td>
+</tr>
+<tr>
+<td><strong>Push</strong></td>
+<td><span class="check">✓</span> 10&ndash;20 для&nbsp;маркетинга</td>
+<td>Можно для&nbsp;триггерных и&nbsp;транзакционных; маркетинг&nbsp;&mdash; только при явной релевантности</td>
+<td><span class="x">✕</span> 20&ndash;10&nbsp;не отправляем</td>
+</tr>
+<tr>
+<td><strong>SMS</strong></td>
+<td><span class="check">✓</span> 10&ndash;20 строго</td>
+<td>Только критичные (OTP, fraud)</td>
+<td><span class="x">✕</span> 20&ndash;10&nbsp;не отправляем</td>
+</tr>
+<tr>
+<td><strong>In-app</strong></td>
+<td><span class="check">✓</span> Любое время сессии</td>
+<td><span class="check">✓</span> Любое время сессии</td>
+<td>Не&nbsp;применяется (юзер сам открыл приложение)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>Часовой пояс пользователя</h4>
+<p>Все временные правила применяются по&nbsp;<strong>локальному времени юзера</strong>, не&nbsp;по&nbsp;серверному. Часовой пояс хранится в&nbsp;профиле как атрибут <code>timezone</code>, обновляется через SDK или&nbsp;IP geolocation. В&nbsp;Customer.io используется опция <code>Send in user's timezone</code> для&nbsp;всех кампаний кроме Системных.</p>
+
+<h4>Исключения</h4>
+<ul>
+<li><strong>Системные (Security)</strong>&nbsp;&mdash; отправляются всегда, в&nbsp;любое время суток и&nbsp;день недели. Fraud alert не&nbsp;ждет 9&nbsp;утра.</li>
+<li><strong>Транзакционные&nbsp;/ сервисные</strong>&nbsp;&mdash; отправляются в&nbsp;любое время в&nbsp;будни. В&nbsp;quiet hours&nbsp;&mdash; только если действие требует немедленной реакции (failed payment, low balance).</li>
+<li><strong>Триггерные коммуникации</strong> по&nbsp;событию пользователя (оплата, конверсия)&nbsp;&mdash; отправляются сразу после события, даже в&nbsp;выходные или вне базового окна. Юзер ждет ответа на&nbsp;свое действие.</li>
+<li><strong>Локально праздничные дни</strong>&nbsp;&mdash; учитываются для&nbsp;крупных рынков (Россия, Казахстан, EU). В&nbsp;праздники маркетинг приостанавливается так&nbsp;же, как в&nbsp;выходные.</li>
+</ul>
+
+<h4>Принципы</h4>
+<ul>
+<li><strong>Дневное время лучше всего проходит.</strong> Open rate в&nbsp;окне 10&ndash;20 стабильно выше&nbsp;&mdash; это базовый ориентир.</li>
+<li><strong>Будни приоритетны</strong>, но&nbsp;запрета на&nbsp;выходные нет. Если кампания таргетирована и&nbsp;релевантна&nbsp;&mdash; выходные допустимы.</li>
+<li><strong>Местное время юзера</strong>, не&nbsp;серверное. Иначе письмо &laquo;доброго утра&raquo; прилетит в&nbsp;3&nbsp;ночи.</li>
+<li><strong>Quiet hours для&nbsp;push и&nbsp;SMS обязательны</strong>&nbsp;&mdash; это вопрос не&nbsp;вежливости, а&nbsp;repurtации канала. Ночной push приводит к&nbsp;мгновенному отключению уведомлений.</li>
+<li><strong>Системные и&nbsp;триггеры на&nbsp;действия</strong>&nbsp;&mdash; единственные исключения. Все остальное уважает время.</li>
+</ul>
+
+<div class="callout warn">
+<span class="callout-label">Дефект</span>
+Маркетинг или сервисное сообщение, отправленные в&nbsp;quiet hours без флага Системных. Push в&nbsp;выходные без явной релевантности. Email в&nbsp;воскресенье вечером для&nbsp;холодного сегмента.
+</div>
+</section>
+
+<section id="s10">
+<div class="section-head"><span class="section-num">10</span>&nbsp;<h2>Конфликты воронок и&nbsp;приоритизация</h2></div>
+<p>Главное правило: <strong>один юзер не&nbsp;может одновременно находиться в&nbsp;двух маркетинговых воронках.</strong> Если такая ситуация возникает&nbsp;&mdash; есть четкие правила, какая воронка побеждает.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Сценарий</th> <th>Что не&nbsp;должно происходить</th> <th>Правило</th></tr></thead>
+<tbody>
+<tr><td>Юзер в&nbsp;онбординге продукта&nbsp;А и&nbsp;попадает в&nbsp;реактивацию продукта Б</td> <td>Параллельная отправка из&nbsp;двух воронок</td> <td>Онбординг новых продуктов выигрывает у&nbsp;реактивации. Реактивация&nbsp;&mdash; на&nbsp;паузу до&nbsp;окончания онбординга.</td></tr>
+<tr><td>Маркетинг по&nbsp;картам сегодня, OnLock завтра</td> <td>Два разных продукта подряд &rarr; юзер воспринимает как спам</td> <td>Между маркет-сообщениями разных продуктов&nbsp;&mdash; минимум <strong>3&nbsp;дня</strong>. Один юзер = одно продуктовое предложение в&nbsp;активный период.</td></tr>
+<tr><td>Юзер уже получил маркет от&nbsp;продукта&nbsp;А, продукт&nbsp;Б хочет свое</td> <td>Превышение глобального лимита (2/нед, 8/мес)</td> <td>Лимит&nbsp;&mdash; на&nbsp;юзера, не&nbsp;на&nbsp;продукт. Продукт Б&nbsp;ждет следующего окна.</td></tr>
+<tr><td>Юзер в&nbsp;активной транзакционной коммуникации (просрочка, watching заявки)</td> <td>Маркетинг поверх транзакционного потока</td> <td>На&nbsp;время активного транзакционного флоу маркетинг ставится на&nbsp;паузу. Возобновляется через 24&ndash;48&nbsp;ч после завершения.</td></tr>
+<tr><td>Юзер только что совершил конверсию (взял займ, оформил карту)</td> <td>Оффер по&nbsp;тому&nbsp;же продукту, который он&nbsp;уже купил</td> <td>Минимум <strong>7&nbsp;дней</strong> без маркетинга по&nbsp;совершенному действию. Затем&nbsp;&mdash; релевантный cross-sell или onboarding.</td></tr>
+<tr><td>Конкурирующие воронки внутри одного продукта</td> <td>Юзер в&nbsp;двух промо одновременно</td> <td>На&nbsp;уровне Customer.io&nbsp;&mdash; исключение групп: юзер не&nbsp;может быть в&nbsp;двух маркет-сегментах одного продукта одновременно. Приоритет&nbsp;&mdash; у&nbsp;более &laquo;горячего&raquo;.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Технические требования</h4>
+<ul>
+<li>Глобальный <strong>frequency cap</strong> на&nbsp;юзера в&nbsp;CDP, считающий все маркетинговые касания всех продуктов суммарно.</li>
+<li><strong>Mutually exclusive segments</strong>: юзер физически не&nbsp;может быть в&nbsp;двух маркетинговых воронках одного типа одновременно.</li>
+<li><strong>Cooldown 7&nbsp;дней</strong> после конверсии&nbsp;&mdash; продукт, по&nbsp;которому юзер совершил действие, не&nbsp;отправляет маркетинг еще неделю.</li>
+</ul>
+</section>
+
+      <section id="s11">
+        <div class="section-head"><span class="section-num">11</span><h2>Подписки и предпочтения</h2></div>
+        <h4>Управление</h4>
+        <ul>
+          <li>Глобальные настройки в&nbsp;<code>customer.io</code>.</li>
+          <li>Настройки пользователя в&nbsp;EMCD (Subscription&nbsp;Center).</li>
+          <li>Логика подписок синхронизируется между продуктом и&nbsp;CRM.</li>
+        </ul>
+        <h4>Каналы и&nbsp;управление подписками</h4>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Канал</th><th>Возможность отписки</th><th>Источник</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Email</strong></td><td><span class="check">✓</span> Да</td><td>customer.io + Settings EMCD</td></tr>
+              <tr><td><strong>Push</strong></td><td><span class="check">✓</span> Да</td><td>устройство / Settings EMCD App</td></tr>
+              <tr><td><strong>In-App</strong></td><td><span class="x">✕</span> Нет</td><td>EMCD App</td></tr>
+              <tr><td><strong>Stories</strong></td><td><span class="x">✕</span> Нет</td><td>EMCD App</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Архитектура: события и атрибуты</h4>
+        <p>Каждый продукт формирует события <code>notify_*</code> с настройками каналов. Значения записываются в user attributes и используются как условия в кампаниях.</p>
+        <pre><code>// Событие
+notify_worker_offline = {
+  "email": true,
+  "push": true,
+  "tg": false
+}
+
+// Кампания
+UPD Person : notify_worker_offline
+  → атрибут пользователя обновляется
+  → используется как условие отправки</code></pre>
+        <h4>Условие отправки</h4>
+        <p>Коммуникация уходит, если <strong>пользователь попал в событие/сегмент</strong> AND <strong>соответствующий атрибут канала = true</strong>.</p>
+      </section>
+
+      <section id="s12">
+<div class="section-head"><span class="section-num">12</span>&nbsp;<h2>Гео и&nbsp;регуляторика</h2></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Регион</th> <th>Ограничения</th></tr></thead>
+<tbody>
+<tr><td><strong>США</strong></td> <td>Маркетинговые коммуникации не&nbsp;разрешены, кроме майнинга.</td></tr>
+<tr><td><strong>Европа (EU)</strong></td> <td>Маркетинг ограничен. GDPR, consent, лицензирование MICA.</td></tr>
+<tr><td><strong>Иран</strong></td> <td>Коммуникации и&nbsp;пользователи заблокированы.</td></tr>
+</tbody>
+</table>
+</div>
+<h4>Требования</h4>
+<ul>
+<li>GEO-атрибут обязателен в&nbsp;каждой кампании.</li>
+<li>Используются сегменты <code>GEO include</code>&nbsp;/ <code>GEO exclude</code>.</li>
+<li>Учитывается продукт и&nbsp;приложение пользователя (Mining App, Coinhold, Multi-app).</li>
+<li>Соответствие GDPR, локальным законам по&nbsp;защите данных, требованиям по&nbsp;фин. продуктам.</li>
+</ul>
+<div class="callout warn">
+<span class="callout-label">Дефект</span>
+Отсутствие GEO-сегментации в&nbsp;кампании. Список стран и&nbsp;правил обновляется регулярно.
+</div>
+</section>
+
+<section id="s13">
+<div class="section-head"><span class="section-num">13</span>&nbsp;<h2>Политика для&nbsp;ключевых сегментов</h2></div>
+<h4>Принципы</h4>
+<ul>
+<li>Lifecycle-сегмент пользователя (onboarding, activation, retention, reactivation).</li>
+<li>Продукт (Coinhold, Mining и&nbsp;др.)&nbsp;&mdash; пользователь участвует только в&nbsp;релевантных сценариях.</li>
+<li>Ценностный статус (VIP&nbsp;/ high-value).</li>
+</ul>
+<h4>Lifecycle-сегменты</h4>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Этап</th> <th>Сценарии</th> <th>Особенность</th></tr></thead>
+<tbody>
+<tr><td><strong>Регистрация &rarr; KYC</strong></td> <td>Приветствие, помощь с&nbsp;верификацией, последний шанс пройти KYC</td> <td>Дни 0&ndash;7, выход при завершении KYC или активации в&nbsp;продукте</td></tr>
+<tr><td><strong>Онбординг</strong></td> <td>Первый депозит, первая операция, начал майнить</td> <td>Дни 0&ndash;14 после KYC</td></tr>
+<tr><td><strong>Активный пользователь</strong></td> <td>Ежемесячный дайджест Monthly Recap, советы по&nbsp;продукту, анонсы обновлений, опросы NPS</td> <td>Постоянный режим</td></tr>
+<tr><td><strong>Риск оттока&nbsp;/ отток</strong></td> <td>Возврат при 7/14/30 днях без логина</td> <td>Триггер по&nbsp;последнему логину</td></tr>
+<tr><td><strong>Расширение&nbsp;/ Cross-sell</strong></td> <td>Предложение других продуктов экосистемы</td> <td>Уважает cap, уровень Маркетинговых</td></tr>
+</tbody>
+</table>
+</div>
+<h3>VIP&nbsp;/ High-value сегмент</h3>
+<p>В&nbsp;компании сейчас <strong>нет единого подхода к&nbsp;определению VIP- и&nbsp;high-value-пользователей</strong>&nbsp;&mdash; ни&nbsp;на&nbsp;уровне продуктов, ни&nbsp;на&nbsp;уровне CRM. Каждый продукт работает со&nbsp;своими ценными клиентами по-своему, а&nbsp;Customer Relations определяет статус вручную, без формализованных критериев. Это создает неконсистентный опыт и&nbsp;мешает строить адресные коммуникации.</p>
+
+<h4>Текущее состояние</h4>
+<p><strong>Customer Relations</strong> ведет работу с&nbsp;ценными пользователями вручную&nbsp;&mdash; определяет их&nbsp;по&nbsp;совокупности косвенных признаков (личное знакомство менеджера, история переписки, объем операций &laquo;на&nbsp;глаз&raquo;). Единого реестра VIP с&nbsp;фиксированными критериями нет.</p>
+<p><strong>Майнинг</strong> использует сегментацию по&nbsp;хешрейту: пользователи попадают в&nbsp;группы условно &laquo;крупных&raquo; по&nbsp;уровню добывающих мощностей. Но&nbsp;эта сегментация <strong>не&nbsp;зафиксирована в&nbsp;продуктовых базах</strong>&nbsp;&mdash; она существует как рабочее понятие команды, не&nbsp;как формальный атрибут пользователя. Хешрейт&nbsp;&mdash; динамический показатель, поэтому даже если зафиксировать пороги, статус будет резко меняться от&nbsp;месяца к&nbsp;месяцу.</p>
+<p><strong>Coinhold, Wallet, P2P, Cards, OnLock</strong>&nbsp;&mdash; собственных формализованных VIP-сегментов не&nbsp;имеют. Ценность пользователя оценивается ad-hoc или не&nbsp;оценивается вовсе.</p>
+
+<h4>Цель</h4>
+<p>С&nbsp;каждым продуктом разработать <strong>единообразную систему классификации</strong> ценных пользователей. для&nbsp;каждого продукта:</p>
+<ul>
+<li>зафиксировать критерии попадания в&nbsp;high-value и&nbsp;VIP (объем, активность, продуктовая лояльность);</li>
+<li>описать <strong>продуктовые особенности</strong> для&nbsp;этих групп&nbsp;&mdash; что именно меняется в&nbsp;опыте: расширенные лимиты, приоритетная поддержка, особые условия;</li>
+<li><strong>подсветить статус самим пользователям</strong>&nbsp;&mdash; чтобы они понимали, что находятся в&nbsp;этом сегменте, и&nbsp;видели сопутствующие привилегии.</li>
+</ul>
+
+<h4>Что в&nbsp;коммуникациях</h4>
+<p>Пока единых критериев нет, и&nbsp;Customer Relations работает с&nbsp;VIP вручную, в&nbsp;рассылках для&nbsp;них:</p>
+<ul>
+<li><strong>Сниженная частота</strong> маркетинговых касаний&nbsp;&mdash; VIP не&nbsp;нужно &laquo;продавать&raquo;, им&nbsp;нужно сообщать релевантное.</li>
+<li><strong>Персональный контент</strong> вместо массовых промо. Если массовая кампания включает ценных пользователей&nbsp;&mdash; лучше отдельный сегмент с&nbsp;другим текстом.</li>
+<li><strong>Баннер с&nbsp;персональным менеджером</strong> в&nbsp;рассылках для&nbsp;пользователей, у&nbsp;которых есть закрепленный менеджер в&nbsp;Customer Relations. Юзер видит, к&nbsp;кому он&nbsp;может обратиться напрямую.</li>
+<li><strong>Системные и&nbsp;транзакционные</strong> сообщения идут как обычно&nbsp;&mdash; VIP не&nbsp;освобожден от&nbsp;безопасности и&nbsp;операционных уведомлений.</li>
+<li><strong>Ручная синхронизация</strong> сегмента по&nbsp;данным Customer Relations.</li>
+</ul>
+
+<h4>Что должно появиться</h4>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Что</th> <th>Кто отвечает</th></tr></thead>
+<tbody>
+<tr><td>Единые критерии классификации VIP&nbsp;/ high-value по&nbsp;каждому продукту</td> <td>Продуктовые команды&nbsp;/ CRM&nbsp;/ Customer Relations</td></tr>
+<tr><td>Реестр VIP в&nbsp;источнике истины (продуктовая&nbsp;БД, не&nbsp;&laquo;в&nbsp;голове менеджера&raquo;)</td> <td>Продукт + Аналитика</td></tr>
+<tr><td>Синхронизация VIP-статуса с&nbsp;Customer.io как user attribute</td> <td>CRM + Аналитика</td></tr>
+<tr><td>Продуктовые особенности и&nbsp;привилегии для&nbsp;каждой группы</td> <td>Продуктовые команды&nbsp;/ CRM&nbsp;/ Customer Relations</td></tr>
+<tr><td>Механика подсветки статуса в&nbsp;продукте и&nbsp;рассылках</td> <td>Продукт + CRM</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="callout">
+<span class="callout-label">До&nbsp;формализации</span>
+Пока единая система не&nbsp;построена, массовые маркетинговые кампании по&nbsp;умолчанию исключают известных VIP через ручной exclude-сегмент, который ведет Customer Relations. Любая массовая рассылка, потенциально включающая ценных пользователей, согласуется с&nbsp;Customer Relations перед запуском.
+</div>
+</section>
+
+<section id="s14">
+<div class="section-head"><span class="section-num">14</span>&nbsp;<h2>Контент и&nbsp;персонализация</h2></div>
+<h4>Принципы</h4>
+<ul>
+<li>Персонализация обязательна для&nbsp;всех коммуникаций.</li>
+<li>Используются: user attributes, events, агрегированные данные.</li>
+<li>Конкретика вместо общих формулировок.</li>
+<li>Один пользователь&nbsp;&mdash; один язык во&nbsp;всех каналах.</li>
+</ul>
+<h4>Источники данных</h4>
+<ul>
+<li><strong>User attributes</strong>&nbsp;&mdash; баланс, продукт, статус.</li>
+<li><strong>Events</strong>&nbsp;&mdash; действия пользователя с&nbsp;контекстом.</li>
+</ul>
+<h4>Пример: Coinhold, завершение депозита</h4>
+<p>Срок депозита, сумма, начисленный доход&nbsp;&mdash; используются в&nbsp;тексте сообщения для&nbsp;формирования персонального предложения о&nbsp;продлении или новом депозите.</p>
+<h4>Языки и&nbsp;локализация</h4>
+<ul>
+<li>Язык определяется по&nbsp;настройкам сайта&nbsp;/ приложения. Дополнительно по&nbsp;GEO.</li>
+<li>Пользователь получает коммуникации только на&nbsp;одном языке, консистентно во&nbsp;всех каналах.</li>
+<li>При отсутствии перевода&nbsp;&mdash; fallback на&nbsp;дефолтный язык (English).</li>
+</ul>
+<div class="callout warn">
+<span class="callout-label">Дефект</span>
+Отсутствие персонализации при наличии данных. Отсутствие локализации для&nbsp;ключевых кампаний.
+</div>
+</section>
+
+<section id="s15">
+<div class="section-head"><span class="section-num">15</span>&nbsp;<h2>Управление кампаниями</h2></div>
+<h4>Жизненный цикл кампании</h4>
+<ol>
+<li>Постановка задачи и&nbsp;цели.</li>
+<li>Определение сегмента (включая exclude).</li>
+<li>Настройка логики и&nbsp;тестирование.</li>
+<li>Запуск всегда с&nbsp;контрольной группой.</li>
+<li>Анализ результатов.</li>
+</ol>
+<h4>Требования к&nbsp;кампании</h4>
+<div class="defs">
+<div><dt>Цель (goal)</dt></div> <div><dd>Какое поведение или метрику кампания должна изменить.</dd></div>
+<div><dt>Описание</dt></div> <div><dd>Краткое содержание для&nbsp;реестра кампаний.</dd></div>
+<div><dt>Владелец</dt></div> <div><dd>Конкретный человек, ответственный за&nbsp;результат.</dd></div>
+<div><dt>Сегментация</dt></div> <div><dd>Кто получает, кто исключен, на&nbsp;каких условиях.</dd></div>
+<div><dt>Подписки</dt></div> <div><dd>Какие topic&rsquo;и проверяются, какой канал используется.</dd></div>
+<div><dt>GEO</dt></div> <div><dd>В&nbsp;каких регионах работает кампания.</dd></div>
+<div><dt>Лимиты</dt></div> <div><dd>Учет частотных ограничений.</dd></div>
+<div><dt>Метрики</dt></div> <div><dd>Что измеряется и&nbsp;как.</dd></div>
+</div>
+<div class="callout">
+<span class="callout-label">Документация</span>
+Все кампании ведутся в&nbsp;едином реестре. Запуск только через customer.io. Запуск без соблюдения правил политики недопустим.
+</div>
+</section>
+
+<section id="s16">
+<div class="section-head"><span class="section-num">16</span>&nbsp;<h2>Метрики</h2></div>
+<p>Что измеряем по&nbsp;кампаниям, продукту и&nbsp;здоровью базы. Метрики делятся на&nbsp;четыре блока: канальные (как сработал канал), конверсионные (что сделал юзер после касания), продуктовые (как кампания повлияла на&nbsp;бизнес), здоровье базы (общее состояние коммуникаций).</p>
+
+<h3>Канальные метрики</h3>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Канал</th> <th>Метрика</th> <th>Значение&nbsp;/ триггер</th></tr></thead>
+<tbody>
+<tr><td>Email</td> <td><strong>Delivery Rate</strong></td> <td>Доля доставленных от&nbsp;отправленных. Алерт &lt; 95%.</td></tr>
+<tr><td>Email</td> <td><strong>Open Rate</strong></td> <td>Доля открытых от&nbsp;доставленных.</td></tr>
+<tr><td>Email</td> <td><strong>CTR&nbsp;/ CTOR</strong></td> <td>Клики от&nbsp;отправленных&nbsp;/ открытых.</td></tr>
+<tr><td>Email</td> <td><strong>Unsubscribe Rate</strong></td> <td>Норма&nbsp;0,1&ndash;0,5%. <span class="status-dot red"></span>Алерт &gt; 0,5%.</td></tr>
+<tr><td>Email</td> <td><strong>Spam Complaint Rate</strong></td> <td>Алерт &gt; 0,05% (порог ISP).</td></tr>
+<tr><td>Push</td> <td><strong>CTR</strong></td> <td>Открытия от&nbsp;доставленных.</td></tr>
+<tr><td>Push</td> <td><strong>Opt-out Rate</strong></td> <td>Доля отключивших push на&nbsp;ОС.</td></tr>
+<tr><td>In-App</td> <td><strong>View &amp;&nbsp;Tap Rate</strong></td> <td>Вовлечение во&nbsp;внутренние каналы.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Конверсионные метрики</h3>
+<p>Конверсия&nbsp;&mdash; это <strong>что юзер сделал после получения коммуникации</strong>. Конверсией для&nbsp;кампании может быть:</p>
+<ul>
+<li><strong>Достижение события</strong>&nbsp;&mdash; юзер совершил конкретное продуктовое действие (пополнил кошелек, добавил воркера и&nbsp;т.д.).</li>
+<li><strong>Попадание в&nbsp;сегмент</strong>&nbsp;&mdash; юзер перешел в&nbsp;более &laquo;горячий&raquo; сегмент (например, из&nbsp;&laquo;зарегистрирован&raquo; в&nbsp;&laquo;активный&raquo;).</li>
+<li><strong>Выпадание из&nbsp;сегмента</strong>&nbsp;&mdash; юзер вышел из&nbsp;&laquo;отрицательного&raquo; сегмента (например, из&nbsp;&laquo;спящий&raquo; в&nbsp;&laquo;активный&raquo;, из&nbsp;&laquo;at-risk&raquo; в&nbsp;&laquo;retained&raquo;).</li>
+</ul>
+
+<h4>Продуктовые события&nbsp;&mdash; типичные конверсии</h4>
+<p>События, которые подтверждают, что активация или конвертация в&nbsp;продукте произошла. Конкретный набор зависит от&nbsp;кампании, ниже&nbsp;&mdash; базовый список по&nbsp;продуктам экосистемы.</p>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th style="width: 22%">Продукт&nbsp;/ контекст</th> <th>События-конверсии</th></tr></thead>
+<tbody>
+<tr><td><strong>Wallet</strong></td> <td>Пополнение кошелька, первая исходящая транзакция</td></tr>
+<tr><td><strong>Coinhold</strong></td> <td>Пополнение Coinhold, открытие депозита, продление депозита</td></tr>
+<tr><td><strong>Mining</strong></td> <td>Начало майнинга, добавление воркера, получение выплаты по&nbsp;майнингу</td></tr>
+<tr><td><strong>Обмены&nbsp;/ торговля</strong></td> <td><code>Action Success</code> &mdash;&nbsp;успешная сделка по&nbsp;обмену</td></tr>
+<tr><td><strong>P2P</strong></td> <td>Создание объявления, успешная P2P-сделка, подтверждение оплаты</td></tr>
+<tr><td><strong>Cards</strong></td> <td>Оформление карты, пополнение, первая транзакция</td></tr>
+<tr><td><strong>OnLock</strong></td> <td>Оформление займа, займ выдан, погашение займа</td></tr>
+<tr><td><strong>Кросс-продукт</strong></td> <td>Активация второго продукта экосистемы у&nbsp;юзера</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>Атрибуция</h4>
+<ul>
+<li><strong>Окно атрибуции</strong>&nbsp;&mdash; конверсия учитывается, если событие произошло в&nbsp;течение&nbsp;N дней после касания. Стандарт: 7&nbsp;дней для&nbsp;триггерных, 14&nbsp;дней для&nbsp;broadcast-кампаний.</li>
+<li><strong>Last-touch</strong> по&nbsp;умолчанию&nbsp;&mdash; конверсия атрибуцируется последнему касанию из&nbsp;CRM до&nbsp;события.</li>
+<li><strong>Multi-touch</strong>&nbsp;&mdash; для&nbsp;долгих воронок (например, онбординг 14&nbsp;дней) можно использовать модель multi-touch с&nbsp;разделением между всеми касаниями в&nbsp;окне.</li>
+<li>Конверсии вне окна атрибуции и&nbsp;от&nbsp;юзеров вне сегмента кампании&nbsp;&mdash; не&nbsp;считаем.</li>
+</ul>
+
+<h3>Продуктовые метрики</h3>
+<p>Эффект кампании на&nbsp;бизнес. Считаются вместе с&nbsp;конверсиями, но&nbsp;измеряют не&nbsp;сам факт действия, а&nbsp;его масштаб и&nbsp;долгосрочный эффект.</p>
+<div class="defs">
+<div><dt>Conversion rate</dt></div> <div><dd>Доля пользователей, совершивших целевое событие после коммуникации (в&nbsp;окне атрибуции).</dd></div>
+<div><dt>Revenue per message</dt></div> <div><dd>Выручка, атрибуцированная к&nbsp;кампании, деленная на&nbsp;число отправленных сообщений.</dd></div>
+<div><dt>Activation uplift</dt></div> <div><dd>Влияние кампании на&nbsp;активацию сегмента&nbsp;&mdash; насколько быстрее или чаще пользователи доходят до&nbsp;активации по&nbsp;сравнению с&nbsp;контрольной группой.</dd></div>
+<div><dt>Retention impact</dt></div> <div><dd>Эффект на&nbsp;удержание и&nbsp;отток в&nbsp;горизонте 30/60/90&nbsp;дней.</dd></div>
+</div>
+
+<h3>Здоровье базы</h3>
+<p>Метрики, которые отслеживают общее состояние коммуникаций&nbsp;&mdash; независимо от&nbsp;конкретной кампании. Алерты при выходе за&nbsp;пороги.</p>
+<div class="metric-grid">
+<div class="metric">
+<div class="metric-label">Engagement rate</div>
+<div class="metric-value">30/60/90<span class="unit">дн</span></div>
+<div class="metric-note">Доля активной аудитории от&nbsp;базы.</div>
+</div>
+<div class="metric">
+<div class="metric-label">Unsub rate</div>
+<div class="metric-value">&lt; 0.5<span class="unit">%</span></div>
+<div class="metric-note">Алерт при превышении.</div>
+</div>
+<div class="metric">
+<div class="metric-label">Compliant rate</div>
+<div class="metric-value">&mdash;<span class="unit"></span></div>
+<div class="metric-note">Доля жалоб на&nbsp;спам. Алерт при превышении порога ISP.</div>
+</div>
+<div class="metric">
+<div class="metric-label">CTR</div>
+<div class="metric-value">бенчмарк<span class="unit"></span></div>
+<div class="metric-note">Сравнение CTR по&nbsp;каждому каналу с&nbsp;индустриальными бенчмарками.</div>
+</div>
+</div>
+</section>
+
+      <section id="s17">
+        <div class="section-head"><span class="section-num">17</span><h2>Дефекты и контроль качества</h2></div>
+        <p>Любое нарушение правил политики считается дефектом. Дефекты подлежат логированию, остановке кампании и разбору в команде. Цель — разбор и корректировка процесса.</p>
+        <h4>Классификация дефектов</h4>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Уровень</th><th>Что попадает</th><th>Действие</th></tr></thead>
+            <tbody>
+              <tr><td><span class="pill" style="color:var(--red);border-color:var(--red)">Critical</span></td><td>Регуляторное нарушение, рассылка после отписки, утечка данных, систематический переспам (отправка одним и тем же контентом подряд несколько дней), отправка по hard-suppression</td><td>Немедленная остановка. Эскалация владельцу политики. Ретроспектива.</td></tr>
+              <tr><td><span class="pill" style="color:var(--orange);border-color:var(--orange)">Major</span></td><td>Превышение частотных лимитов кампанией, конфликт двух воронок на одном юзере, отсутствие GEO-сегментации, отправка без exclude-сегментов</td><td>Остановка кампании. Фикс перед следующим запуском.</td></tr>
+              <tr><td><span class="pill" style="color:var(--blue);border-color:var(--blue)">Minor</span></td><td>Отсутствие персонализации при наличии данных, неоптимальное время отправки, отсутствие A/B на крупной кампании</td><td>Бэклог. Фикс в течение спринта.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Чеклист перед запуском кампании</h4>
+        <ul>
+          <li>Сегмент определен, документирован, работает в customer.io.</li>
+          <li>Exclude-сегменты учтены.</li>
+          <li>GEO-фильтр применен.</li>
+          <li>Подписка / topic проверяются.</li>
+          <li>Лимиты сообщений не нарушаются.</li>
+          <li>Контент персонализирован, локализован.</li>
+          <li>Цель и метрики прописаны.</li>
+          <li>Holdout-группа настроена.</li>
+          <li>Кампания тегирована (продукт, тип, владелец).</li>
+        </ul>
+        <div class="callout warn">
+          <span class="callout-label">Регулярный аудит</span>
+          Раз в квартал — аудит активных кампаний на соответствие политике. Раз в полугодие — обзор частотных лимитов на предмет ужесточения / смягчения.
+        </div>
+      </section>
+
+      <section id="s18">
+        <div class="section-head"><span class="section-num">18</span><h2>Роли и governance</h2></div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Роль</th><th>Ответственность</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Owner политики <span style="white-space: nowrap;">(CRM-команда)</span></strong></td><td>Поддержка, обновление, ревью политики. Эскалация critical-дефектов. Финальное решение по исключениям.</td></tr>
+              <tr><td><strong>Владелец кампании <span style="white-space: nowrap;">(CRM-команда)</span></strong></td><td>Соответствие кампании политике на этапе запуска. Метрики, holdout, документация.</td></tr>
+              <tr><td><strong>Продукт</strong></td><td>Транзакционные лимиты по своему продукту. Subscription Center в продукте. Передача актуальных событий и атрибутов в CDP.</td></tr>
+              <tr><td><strong>Аналитика</strong></td><td>CRM-дашборд, расчет холдаутов, метрики, мониторинг здоровья базы.</td></tr>
+              <tr><td><strong>Compliance / Legal</strong></td><td>Регуляторика по GEO, GDPR, MICA. Утверждение Subscription Center и regulatory notices.</td></tr>
+              <tr><td><strong>Customer Relations</strong></td><td>Работа с VIP и ключевыми лидами в HubSpot. Согласование массовых кампаний, включающих VIP.</td></tr>
+              <tr><td><strong>Разработка</strong></td><td>Реализация frequency cap в CDP, computed attributes, интеграции продуктов с customer.io, синхронизация с HubSpot.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Принципы governance</h4>
+        <ul>
+          <li>Решения по политике принимает CRM-команда; решения по конкретным кампаниям — их владельцы в рамках политики.</li>
+          <li>Изменения политики обсуждаются и утверждаются, фиксируются в changelog.</li>
+          <li>Спорные ситуации эскалируются к owner'у политики, не решаются ad-hoc.</li>
+        </ul>
+      </section>
+
+      <section id="s19">
+        <div class="section-head"><span class="section-num">19</span><h2>Пересмотр политики и исключения</h2></div>
+        <h4>Регулярный пересмотр</h4>
+        <ul>
+          <li>Полный ревью политики — <strong>ежеквартально</strong>.</li>
+          <li>Ревью лимитов на основе данных — <strong>ежемесячно</strong> для&nbsp;метрик базы.</li>
+          <li>Внеочередной пересмотр — при изменении регуляторных требований, запуске нового продукта, или превышении KPI здоровья базы.</li>
+        </ul>
+        <h4>Запрос на исключение</h4>
+        <p>Исключение из правил политики возможно для&nbsp;конкретной кампании при условии:</p>
+        <ul>
+          <li>Письменное обоснование от владельца кампании.</li>
+          <li>Согласование с owner'ом политики.</li>
+          <li>Логирование исключения в реестре кампаний с причиной и сроком действия.</li>
+          <li>Пост-фактум разбор результатов в течение 14 дней после кампании.</li>
+        </ul>
+        <h4>Changelog политики</h4>
+        <p>Все изменения версии документа фиксируются с датой, автором, описанием и причиной. Версионирование semver-style: <code>major.minor</code>. Major — переработка структуры; minor — уточнения и новые разделы.</p>
+        <div class="callout">
+          <span class="callout-label">Текущая версия</span>
+          v1.2 · апрель 2026. Ревью — ежеквартально.
+        </div>
+      </section>
+
+      <section id="s20">
+        <div class="section-head"><span class="section-num">20</span><h2>Бенчмарки и обоснование</h2></div>
+        <p>Лимиты «1/сутки — 2/неделю — 8/месяц» лежат в нижней половине безопасного диапазона по всем индустриальным бенчмаркам. Это сознательно консервативный выбор: толерантность к маркетингу в финтехе ниже, чем в e-commerce, а цена ошибки — потеря канала вообще.</p>
+        <h3>Email</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Источник</th><th>Что измеряли</th><th>Вывод</th></tr></thead>
+            <tbody>
+              <tr><td>MailerLite 2025</td><td>Медиана unsubscribe</td><td>Медиана 0,22%; здоровый коридор до 0,5%.</td></tr>
+              <tr><td>HubSpot / LINK Mobility</td><td>Бенчмарк отписок</td><td>Норма 0,1–0,5% за кампанию.</td></tr>
+              <tr><td>Amra &amp; Elma 2026</td><td>Влияние частоты</td><td>12+ промо/мес → отписки до 0,31% (+85% к норме).</td></tr>
+              <tr><td>GetResponse</td><td>Оптимум CTR</td><td>Лучшие CTR — 1–2 рассылки/нед.</td></tr>
+              <tr><td>OwlClaw 2025</td><td>Sweet spot</td><td>B2C: до 2/нед для&nbsp;активных, 2–4/мес для&nbsp;общей базы.</td></tr>
+              <tr><td>Mailreach 2026</td><td>Opt-in</td><td>Стандарт 4–8 писем/мес.</td></tr>
+              <tr><td>Act-On / Omnisend / Deployteq</td><td>Sunset / карантин</td><td>60–90 дней без открытий → re-engagement; 6–12 мес → hard-suppression.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Push</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Источник</th><th>Что измеряли</th><th>Вывод</th></tr></thead>
+            <tbody>
+              <tr><td>Localytics</td><td>Порог отключения</td><td>1/нед → 10% отключают. 2–5/нед → 37–46% отключают, 22% перестают пользоваться.</td></tr>
+              <tr><td>Helplama</td><td>Деинсталляция</td><td>1 push/нед → 10% отключают, 6% удаляют. 3–6 push → 40% отключают.</td></tr>
+              <tr><td>Mobiloud</td><td>Удаление приложений</td><td><strong>71% удалений</strong> — из-за избыточных уведомлений.</td></tr>
+              <tr><td>MetaCTO</td><td>Sweet spot</td><td>2–5 хорошо таргетированных push/нед. Weekly push → +440% retention.</td></tr>
+              <tr><td>Apptile (D2C)</td><td>D2C / e-commerce</td><td>Sweet spot 1–3 push/нед.</td></tr>
+              <tr><td>Batch 2025</td><td>Контекст vs масс</td><td>OR контекстных 14,4%, генерических 4,19%.</td></tr>
+              <tr><td>Wohllebe et al. 2021</td><td>Академическое</td><td>Частота неперсонализированных push → ↑удалений.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Соответствие политики данным</h3>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Параметр</th><th>Политика</th><th>Что говорят данные</th></tr></thead>
+            <tbody>
+              <tr><td>Сутки</td><td><strong>≤ 1 маркет</strong></td><td>≥ 2 push в день → массовое отключение и удаление приложения.</td></tr>
+              <tr><td>Неделя</td><td><strong>≤ 2 маркет</strong></td><td>2–5/нед push → 37–46% отключений (Localytics). Email CTR оптимум 1–2/нед.</td></tr>
+              <tr><td>Месяц</td><td><strong>≤ 8 маркет</strong></td><td>Стандарт opt-in 4–8/мес (Mailreach). 12+/мес → +85% к норме отписок.</td></tr>
+              <tr><td>Перерыв</td><td><strong>2–3 дня</strong></td><td>Соответствует frequency capping в Braze, Microsoft Dynamics.</td></tr>
+              <tr><td>Subscription Center</td><td><strong>Обязателен</strong></td><td>Снижает churn, сегментация по предпочтениям → 2x открываемости.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout">
+          <span class="callout-label">Итог</span>
+          Перерыв 2–3 дня между маркетинговыми сообщениями нужен, чтобы юзер не воспринимал коммуникации как «поток» и не вырабатывал привычку игнорировать канал. Карантин обязателен потому, что игнорирование сигналов неактивности убивает sender reputation домена и retention приложения целиком — страдает не только маркетинг, но и доставляемость транзакционных и системных сообщений.
+        </div>
+      </section>
+
+      <section id="s21">
+        <div class="section-head"><span class="section-num">21</span><h2>Источники</h2></div>
+        <div class="src-list">
+          <div class="src-item"><span class="src-num">01</span>MailerLite — Email Marketing Benchmarks 2025</div>
+          <div class="src-item"><span class="src-num">02</span>GetResponse — Email Marketing Benchmarks</div>
+          <div class="src-item"><span class="src-num">03</span>Amra &amp; Elma — Unsubscribe Rate Stats 2026</div>
+          <div class="src-item"><span class="src-num">04</span>OwlClaw — Email Benchmarks 2025</div>
+          <div class="src-item"><span class="src-num">05</span>HubSpot — Open Rate Benchmark</div>
+          <div class="src-item"><span class="src-num">06</span>LINK Mobility — Unsubscribe Rate</div>
+          <div class="src-item"><span class="src-num">07</span>Mailreach — Email Frequency 2026</div>
+          <div class="src-item"><span class="src-num">08</span>Localytics — Push Tolerance Study</div>
+          <div class="src-item"><span class="src-num">09</span>Airship — Push Benchmarks</div>
+          <div class="src-item"><span class="src-num">10</span>Mobiloud — Optimal Push Frequency</div>
+          <div class="src-item"><span class="src-num">11</span>Pushwoosh — Push Benchmarks 2025</div>
+          <div class="src-item"><span class="src-num">12</span>Batch — Push Benchmark 2025</div>
+          <div class="src-item"><span class="src-num">13</span>Wohllebe et al. (2021)</div>
+          <div class="src-item"><span class="src-num">14</span>Braze — Frequency Capping Guide</div>
+          <div class="src-item"><span class="src-num">15</span>Microsoft Dynamics — Frequency Cap</div>
+          <div class="src-item"><span class="src-num">16</span>Act-On — Hierarchy of Engagement</div>
+          <div class="src-item"><span class="src-num">17</span>Omnisend — Email Sunset Policy</div>
+          <div class="src-item"><span class="src-num">18</span>Deployteq — Sunset &amp; Deliverability</div>
+        </div>
+        <p style="margin-top: 24px; font-size: 12px; color: var(--text-muted); font-family: 'IBM Plex Mono', monospace;">
+          Документ обновляется централизованно CRM-командой. Версия v1.2 · апрель 2026 · ревью ежеквартально или при изменении регуляторных требований.
+        </p>
+      </section>
+
+  </main>
+</div>
+
+<script>
+  // THEME
+  const themeToggle = document.getElementById('themeToggle');
+  const themeLabel = document.getElementById('themeLabel');
+  themeToggle.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'light' ? 'dark' : 'light';
+    if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    else document.documentElement.removeAttribute('data-theme');
+    themeLabel.textContent = next === 'light' ? 'Светлая' : 'Темная';
+  });
+
+  // TRACK SWITCHER
+  // ACTIVE NAV ON SCROLL
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // SEARCH
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    navItems.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      if (!q || text.includes(q)) item.style.display = 'flex';
+      else item.style.display = 'none';
+    });
+    document.querySelectorAll('.nav-label').forEach(label => {
+      let next = label.nextElementSibling;
+      let anyVisible = false;
+      while (next && next.classList.contains('nav-item')) {
+        if (next.style.display !== 'none') { anyVisible = true; break; }
+        next = next.nextElementSibling;
+      }
+      label.style.display = anyVisible ? 'block' : 'none';
+    });
+  });
+
+  // COPY BUTTONS
+  document.querySelectorAll('pre').forEach(pre => {
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', () => {
+      const code = pre.querySelector('code') || pre;
+      navigator.clipboard.writeText(code.textContent).then(() => {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  // ANCHOR LINKS — Confluence-style copy-link icons on section headers
+  document.querySelectorAll('section[id] > .section-head').forEach(head => {
+    const section = head.parentElement;
+    const id = section.getAttribute('id');
+    const btn = document.createElement('button');
+    btn.className = 'anchor-link';
+    btn.setAttribute('title', 'Скопировать ссылку на раздел');
+    btn.setAttribute('aria-label', 'Скопировать ссылку на раздел');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="anchor-text">Скопировано</span>';
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const url = window.location.origin + window.location.pathname + '#' + id;
+      navigator.clipboard.writeText(url).then(() => {
+        // Update URL in the address bar without scroll
+        history.replaceState(null, '', '#' + id);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1500);
+      }).catch(() => {
+        // Fallback: select & copy via temporary input
+        const tmp = document.createElement('input');
+        tmp.value = url;
+        document.body.appendChild(tmp);
+        tmp.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(tmp);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1500);
+      });
+    });
+    head.appendChild(btn);
+  });
+</script>
+</body>
+</html>
